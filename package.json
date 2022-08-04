@@ -8,7 +8,11 @@
     "test": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@vue/babel-helper-vue-jsx-merge-props": "^1.2.1",
+    "@vue/babel-preset-jsx": "^1.3.1",
+    "@vueuse/core": "^9.1.0",
     "core-js": "^3.8.3",
+    "pinia": "^2.0.17",
     "vue": "^2.7.8",
     "vue-router": "^3.5.1"
   },

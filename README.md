@@ -1,5 +1,8 @@
 # vue2.7 + typescript + tailwind 后端管理系统模板
 
+使用vue-cli构建,技术栈为Vue2.7, Typescript, Vue-router, pinao, Element, Axios,tailwindcss
+
+
 ## Project setup
 ```
 npm install
