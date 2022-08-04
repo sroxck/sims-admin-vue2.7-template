@@ -1,11 +1,6 @@
 <template>
   <div id="app">
-    <p class="bg-blue-500">111111</p>
-    <nav>
-      <router-link to="/" class="font-medium text-red-500 text-lg">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 

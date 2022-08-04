@@ -1,13 +1,14 @@
 import {useStore,storeToRefs} from '@/store/index'
 import { ref, onMounted,defineComponent, computed } from "vue";
-
 import './test.scss'
+import {findMax} from 'sims-tools'
 export default defineComponent({
   setup() {
    const store1= useStore()
    const {res} = storeToRefs(store1)
    console.log(store1,res.value = '22');
-   
+    
+    console.log(findMax([1,2,3]));
     
     const count = ref(0);
     const refH1 = ref(null);
