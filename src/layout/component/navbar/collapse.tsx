@@ -7,7 +7,6 @@ export default defineComponent({
 
     const toggle = () => {
       isCollapsed.value = !isCollapsed.value;
-      console.log(isCollapsed.value);
     };
     return () => (
       <span class="text-xl">

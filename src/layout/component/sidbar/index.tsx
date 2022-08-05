@@ -7,7 +7,7 @@ export default defineComponent({
     logo,
   },
   setup() {
-    const appStore = useAppStore();
+    const appStore = useAppStore()
     const { isCollapsed } = storeToRefs(appStore);
     return () => (
       <div
@@ -15,6 +15,7 @@ export default defineComponent({
           isCollapsed.value ? "w-20" : "w-60",
           "bg-gray-500",
           "transition-all",
+          "duration-400"
         ]}
       >
         <logo class="text-center  align-middle  break-words"/>

@@ -1,3 +1,9 @@
  main {
   height: calc(100vh - 70px)
 }
+ .navbar{
+  @apply w-full
+}
+.navbar-content{
+  @apply h-16 shadow
+}
