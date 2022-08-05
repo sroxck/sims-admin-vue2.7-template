@@ -4,3 +4,4 @@ export { storeToRefs } from "pinia";
 Vue.use(PiniaVuePlugin);
 export const store = createPinia();
 export * from "./modules/test";
+export * from "./modules/app";
