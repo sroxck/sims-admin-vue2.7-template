@@ -7,6 +7,9 @@ module.exports = {
     extend: {
       transitionDuration: {
         '400': '400ms',
+       },
+       lineHeight: {
+        'extra-loose': '3.5',
        }
     },
   },

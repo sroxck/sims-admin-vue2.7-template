@@ -1,4 +1,4 @@
-import { defineComponent } from "vue";
+import { defineComponent, ref, watch } from "vue";
 import { useAppStore, useSettingsStore, storeToRefs } from "@/store";
 
 export default defineComponent({
@@ -9,13 +9,21 @@ export default defineComponent({
     const { title, switchTitle } = storeToRefs(settingStore);
     const { isCollapsed } = storeToRefs(appStore);
 
+    const showTitle = ref(false);
+    watch(isCollapsed, (item) => {
+      setTimeout(() => {
+        item ? (showTitle.value = true) : (showTitle.value = false);
+      }, 200);
+    });
     const logo = () => (
-      <div class="h-20 pt-7">
-        {switchTitle.value ? switchTitle.value : title.value}
+      <div class="h-20 pt-7 " style={{ opacity: showTitle.value ? "1" : "0" }}>
+        {switchTitle.value || title.value}
       </div>
     );
     const logoWide = () => (
-      <div class="h-20 pt-7">{title.value ? title.value : switchTitle.value}</div>
+      <div class="h-20 pt-7" style={{ opacity: showTitle.value ? "0" : "1" }}>
+        {title.value || switchTitle.value}
+      </div>
     );
     return () => (isCollapsed.value ? logo() : logoWide());
   },

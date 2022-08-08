@@ -10,6 +10,7 @@ export default defineComponent({
       <div class="navbar">
         <nav class="navbar-content  ">
           <collapse />
+          
         </nav>
         {slots.default && slots.default()}
       </div>

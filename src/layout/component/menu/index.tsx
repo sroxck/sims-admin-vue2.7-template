@@ -1,14 +1,17 @@
 import { defineComponent } from "vue";
-
+import item from './item'
 export default defineComponent({
-  setup() {
+  setup(props,{slots}) {
     function renderMenu() {
       return (
-        <ul>
-          <li>2</li>
+        <ul   >
+          {slots.default && slots.default()}
         </ul>
       );
     }
     return () => renderMenu();
+  },
+  components:{
+    item
   },
 });

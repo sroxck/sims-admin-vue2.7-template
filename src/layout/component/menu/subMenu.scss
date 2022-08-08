@@ -1,0 +1,17 @@
+.gruop li{
+  @apply pl-5
+}
+[class^=el-icon-]{
+  margin-right: 5px;
+  margin-left: 5px;
+  width: 24px;
+  text-align: center;
+  font-size: 20px;
+  vertical-align: middle !important;
+}
+.title span {
+  @apply align-middle
+}
+.title .isColse{
+  display: none;
+}
