@@ -4,3 +4,18 @@
 *{
   @apply select-none
 }
+/* vue 过渡动画样式 */
+.sale-fade-enter-active,
+.sale-fade-leave-active {
+  transition: all 0.3s ease;
+}
+
+.sale-fade-enter {
+  transform: scale(0.87);
+  opacity: 0;
+}
+
+.sale-fade-leave-to {
+  transform: scale(1.08);
+  opacity: 0;
+}

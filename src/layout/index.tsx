@@ -12,7 +12,10 @@ export default defineComponent({
         <sidbar></sidbar>
         <navbar>
           <main class="pt-2">
-            <router-view></router-view>
+          <transition name="sale-fade" mode="out-in">
+          <router-view></router-view>
+
+          </transition>
           </main>
         </navbar>
       </div>

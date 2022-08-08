@@ -12,8 +12,10 @@ export default defineComponent({
     const showTitle = ref(false);
     watch(isCollapsed, (item) => {
       setTimeout(() => {
-        item ? (showTitle.value = true) : (showTitle.value = false);
+        item ? (showTitle.value = true) && (toggle.value = false): (showTitle.value = false);
+       
       }, 200);
+      
     });
 
     function renderMenu() {
@@ -45,7 +47,7 @@ export default defineComponent({
           </div>
           <el-collapse-transition>
             {toggle.value ? (
-              <ul class={["transition-all", "duration-400"]}>
+              <ul class={["transition-all", "duration-400",'bg-white'] }>
                 {slots.default && slots.default()}
               </ul>
             ) : ""}
