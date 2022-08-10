@@ -3,7 +3,6 @@ import App from './App.vue'
 import router from './router'
 import './style/index.scss'
 Vue.config.productionTip = false
-// import "tailwindcss/tailwind.css"
 import 'normalize.css/normalize.css'
 import {store} from './store/index'
 import ElementUI from 'element-ui';

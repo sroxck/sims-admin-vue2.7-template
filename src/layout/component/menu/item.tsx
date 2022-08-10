@@ -1,40 +1,47 @@
-import { defineComponent, ref, watch } from "vue";
+import { defineComponent, inject, ref, watch } from "vue";
 import "./subMenu.scss";
 import { useAppStore, storeToRefs } from "@/store/index";
-import { useRouter } from "@/router";
-
+import { useRoute, useRouter } from "@/router";
 export default defineComponent({
   props: {
-    index: { required: false },
+    index: { required: true },
+    active: { required: false },
   },
   setup(props, { slots }) {
     const store = useAppStore();
-    const { isCollapsed } = storeToRefs(store);
-    const router = useRouter()
-   
+    const { isCollapsed, isActive } = storeToRefs(store);
+    const router = useRouter();
+
+    const activeColor = inject("activeColor");
     const showTitle = ref(false);
     watch(isCollapsed, (item) => {
       setTimeout(() => {
         item ? (showTitle.value = true) : (showTitle.value = false);
       }, 200);
     });
+
+    const itemClick = (_: any) => {
+      if (props.index == location.hash.replace("#", "")) return;
+      router.value.push(props.index as string);
+    };
+
     function renderMenu() {
       return (
         <li
-          class="px-3 leading-extra-loose h-14 cursor-pointer hover:bg-blue-200 transition-all duration-400"
-          onClick={_=> router.push((props.index as string))}
+          class="px-3 leading-extra-loose h-14 cursor-pointer hover:bg-blue-200  "
+          onClick={itemClick}
         >
           <div class="title ">
             <el-tooltip placement="right" disabled={!isCollapsed.value}>
-              <div slot="content"> {slots.default && slots.default()}</div>
+              <div slot="content"> {slots.default && slots.default()} </div>
               <div>
-                {
-                  slots.icon ? slots.icon() : <i class="el-icon-question"></i>
-                }
+                {slots.icon ? slots.icon() : <i class="el-icon-"></i>}
                 <span
                   style={{
                     display: isCollapsed.value ? "none" : "inline-block",
                     opacity: showTitle.value ? "0" : "1",
+                    color:
+                      isActive.value == props.index ? (activeColor as any) : "",
                   }}
                 >
                   {!isCollapsed.value ? slots.default && slots.default() : ""}

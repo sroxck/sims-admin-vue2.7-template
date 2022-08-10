@@ -2,11 +2,11 @@ import layout from '@/layout'
 
 export const constantRouter= [
   {
-    path: '/demo',
+    path: '/',
     name: 'router-name', // 设定路由的名字，一定要填写不然使用<keep-alive>时会出现各种问题
     meta: {
       roles: ['admin'], // 设置该路由进入的权限，支持多个权限叠加
-      title: 'demo',// 设置该路由在侧边栏和面包屑中展示的名字
+      title: '首页',// 设置该路由在侧边栏和面包屑中展示的名字
       icon: 'el-icon-eleme', // 设置该路由的图标，支持 svg-class，也支持 el-icon-x element-ui 的 icon
       noCache: true, // 如果设置为true，则不会被 <keep-alive> 缓存(默认 false)
       breadcrumb: false, //  如果设置为false，则不会在breadcrumb面包屑中显示(默认 true)
@@ -17,7 +17,24 @@ export const constantRouter= [
       // 这在某些场景非常有用，比如：一个文章的列表页路由为：/article/list
       // 点击文章进入文章详情页，这时候路由为/article/1，但你想在侧边栏高亮文章列表的路由，就可以进行如下设置
     },
-   
+    children: [
+      {
+        path: '/home333',
+        meta: {
+          title: '首页面板',
+          roles: ['admin'],
+        },
+        component: ()=>import('@/views/test')
+      },
+      {
+        path: '/analy444tics',
+        meta: {
+          title: '数据展示',
+          roles: ['admin'],
+        },
+        component: ()=>import('@/views/demo.vue')
+      }
+    ],
     component:layout
   },
  
@@ -32,6 +49,7 @@ export const constantRouter= [
           icon: 'el-icon-eleme',
           roles: ['admin'],
         },
+       
         component: ()=>import('@/views/test')
       },
       {
@@ -45,7 +63,7 @@ export const constantRouter= [
       }
     ],
     meta: {
-      title: '仪表盘',
+      title: '分析数据',
       icon: 'el-icon-eleme',
     },
     component: layout
@@ -56,15 +74,36 @@ export const constantRouter= [
       {
         path: '/doc',
         meta: {
-          title: '文档',
-          icon: 'el-icon-goods',
+          title: '官方文档',
+          // icon: 'el-icon-goods',
           roles: ['admin'],
         },
+        children:[
+          {
+            path: '/444',
+            meta: {
+              title: '测试层级1-1',
+              // icon: 'el-icon-eleme',
+              roles: ['admin'],
+            },
+            component: ()=>import('@/views/test')
+          },
+          {
+            path: '/33333',
+            meta: {
+              title: '测试层级1-2',
+              // icon: 'el-icon-phone',
+              roles: ['admin'],
+            },
+            component: ()=>import('@/views/demo.vue')
+          }
+        ],
         component: ()=>import('@/views/test')
       }
     ],
     meta: {
-      title: '文档',
+      title: '测试文档',
+      alwaysShow: true,
       icon: 'el-icon-eleme',
     },
     component: layout
@@ -83,7 +122,7 @@ export const constantRouter= [
       }
     ],
     meta: {
-      title: 'svg',
+      title: '怎么回事',
       icon:'el-icon-warning'
     },
     component: layout
@@ -95,7 +134,7 @@ export const constantRouter= [
         path: '/bar',
         meta: {
           title: '柱状图',
-          icon: 'home',
+          
           roles: ['admin'],
         },
         component: ()=>import('@/views/test')
@@ -104,7 +143,7 @@ export const constantRouter= [
         path: '/line',
         meta: {
           title: '折线图',
-          icon: 'home',
+          
           roles: ['admin'],
         },
         component: ()=>import('@/views/test')
@@ -113,7 +152,7 @@ export const constantRouter= [
         path: '/pie',
         meta: {
           title: '饼图',
-          icon: 'home',
+          
           roles: ['admin'],
         },
         component: ()=>import('@/views/test')
@@ -132,7 +171,6 @@ export const constantRouter= [
         path: '/dragTable',
         meta: {
           title: '可拖拽表格',
-          icon: 'home',
           roles: ['admin'],
         },
         component: ()=>import('@/views/test')
@@ -141,7 +179,6 @@ export const constantRouter= [
         path: '/editTable',
         meta: {
           title: '可编辑表格',
-          icon: 'home',
           roles: ['admin'],
         },
         component: ()=>import('@/views/test')

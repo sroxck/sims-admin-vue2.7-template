@@ -9,7 +9,7 @@ export default defineComponent({
       isCollapsed.value = !isCollapsed.value;
     };
     return () => (
-      <span class="text-xl">
+      <span class="text-xl closes">
         <i
           class={isCollapsed.value ? "el-icon-s-unfold" : "el-icon-s-fold"}
           onClick={toggle}

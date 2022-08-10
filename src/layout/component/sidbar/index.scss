@@ -1,3 +1,14 @@
 .logo {
   @apply h-20 pt-7 cursor-pointer 
 }
+ul li {
+  font-size: 14px;
+  color: #303133;
+}
+
+// @media screen and (min-width: 768px) {
+//   .sidebarClass{
+//     min-width: 12rem !important;
+//     width: 12rem !important;
+//   }
+// }

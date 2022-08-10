@@ -1,9 +1,9 @@
-import Vue, { getCurrentInstance } from 'vue'
-import VueRouter, { RouteConfig } from 'vue-router'
-import Test from '../views/test'
-Vue.use(VueRouter)
-import layout from '@/layout'
-import {constantRouter} from './constantRouter'
+import Vue, { computed, getCurrentInstance } from "vue";
+import VueRouter, { RouteConfig } from "vue-router";
+import Test from "../views/test";
+Vue.use(VueRouter);
+import layout from "@/layout";
+import { constantRouter } from "./constantRouter";
 // const routes: Array<RouteConfig> = [
 //   {
 //     path: '/',
@@ -21,7 +21,7 @@ import {constantRouter} from './constantRouter'
 //       {
 //         path:'/about1',
 //         component: () => import(/* webpackChunkName: "about" */ '../views/test')
-  
+
 //       }
 //     ]
 
@@ -29,12 +29,18 @@ import {constantRouter} from './constantRouter'
 // ]
 
 const router = new VueRouter({
-  routes:constantRouter
-})
+  routes: constantRouter,
+});
 export const useRouter = () => {
-  const vm = getCurrentInstance()
-  if (!vm) throw new Error('must be called in setup')
-  
-  return vm.proxy.$router
-  }
-export default router
+  const vm = getCurrentInstance();
+  if (!vm) throw new Error("must be called in setup");
+  const route = computed(() => vm.proxy.$router);
+  return route;
+};
+export const useRoute = () => {
+  const vm = getCurrentInstance();
+  if (!vm) throw new Error("must be called in setup");
+  const router = computed(() => vm.proxy.$route);
+  return router;
+};
+export default router;

@@ -5,5 +5,8 @@
   @apply w-full
 }
 .navbar-content{
-  @apply h-16 shadow
+  border-bottom: 1px solid #eee;
+}
+.rightFont {
+  @apply font-sans dark:text-white text-sm 
 }

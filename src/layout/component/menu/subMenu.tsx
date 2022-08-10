@@ -3,56 +3,124 @@ import item from "./item";
 import "./subMenu.scss";
 import "animate.css";
 import { useAppStore, storeToRefs } from "@/store/index";
+import { useRoute, useRouter } from "@/router";
 
 export default defineComponent({
+  props: {
+    index: { required: true },
+    child: {},
+  },
   setup(props, { slots }) {
     const store = useAppStore();
-    const { isCollapsed } = storeToRefs(store);
+    const { isCollapsed, isActive } = storeToRefs(store);
+
     const toggle = ref(false);
     const showTitle = ref(false);
+
     watch(isCollapsed, (item) => {
       setTimeout(() => {
-        item ? (showTitle.value = true) && (toggle.value = false): (showTitle.value = false);
-       
+        item ? (showTitle.value = true) && (toggle.value = false)
+          : (showTitle.value = false);
       }, 200);
-      
+
+      if (isCollapsed.value == false) {
+        if ((props as any).child.length > 0) {
+          (props as any).child.forEach((item: any) => {
+            if (item.path === location.hash.replace("#", "")) {
+              setTimeout(() => {
+                toggle.value = true;
+              }, 300);
+            } else {
+              item.children?.forEach((zc: any) => {
+                if (zc.path === location.hash.replace("#", "")) {
+                  setTimeout(() => {
+                    toggle.value = true;
+                  }, 300);
+                }
+              });
+            }
+          });
+        }
+        if (isActive.value == props.index) {
+          setTimeout(() => {
+            toggle.value = true;
+          }, 300);
+        }
+      }
     });
+    if ((props as any).child.length > 0) {
+      (props as any).child.forEach((item: any) => {
+        if (item.path === location.hash.replace("#", "")) {
+          toggle.value = true;
+        }
+        if (item.children?.length > 1) {
+          item.children.forEach((chil: any) => {
+            if (chil.path === location.hash.replace("#", "")) {
+              toggle.value = true;
+            }
+          });
+        }
+      });
+    }
+    if (props.index == location.hash.replace("#", "")) {
+      toggle.value = true;
+    }
 
     function renderMenu() {
       return (
-        <li class="gruop">
-          <div
-            class="sMenu leading-extra-loose h-14 cursor-pointer hover:bg-blue-300 select-none px-3"
-            onClick={() => {
-              if (isCollapsed.value) return;
-              toggle.value = !toggle.value;
-            }}
-          >
-            <div class="title">
-            <el-tooltip placement="right" disabled={!isCollapsed.value}>
-              <div slot="content"> {slots.title && slots.title()}</div>
-              <div>
-                {slots.icon && slots.icon()}
-                <span
-                  style={{
-                    display: isCollapsed.value ? "none" : "inline-block",
-                    opacity: showTitle.value ? "0" : "1",
-                  }}
-                >
-                  {!isCollapsed.value ? slots.title && slots.title() : ""}
-                </span>
+        <div>
+          <li  class="gruop">
+            <div class="">
+              <div
+                class="sMenu leading-extra-loose px-3 h-14 cursor-pointer hover:bg-blue-200 select-none "
+                style="position:relative;"
+                onClick={() => {
+                  if (isCollapsed.value) return;
+                  toggle.value = !toggle.value;
+                }}
+              >
+                <div class="title">
+                  <el-tooltip
+                    placement="right"
+                    disabled={!isCollapsed.value}
+                    class="toplip "
+                   
+                  >
+                    <div slot="content"> {slots.title && slots.title()}</div>
+                    <div>
+                      {slots.icon && slots.icon()}
+                      <span
+                        style={{
+                          display: isCollapsed.value ? "none" : "inline-block",
+                          opacity: showTitle.value ? "0" : "1",
+                          flex: 5,
+                        }}
+                      >
+                        {!isCollapsed.value ? slots.title && slots.title() : ""}
+                      </span>
+                      {!isCollapsed.value ? (
+                        toggle.value ? (
+                          <i class="el-icon-arrow-up float-right align-middle text-xs jb"></i>
+                        ) : (
+                          <i class="el-icon-arrow-down float-right align-middle text-xs jb"></i>
+                        )
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                  </el-tooltip>
+                </div>
               </div>
-            </el-tooltip>
+              <el-collapse-transition>
+                {toggle.value ? (
+                  <ul class={["transition-all", "duration-400", "bg-white"]}>
+                    {slots.default && slots.default()}
+                  </ul>
+                ) : ""}
+              </el-collapse-transition>
             </div>
-          </div>
-          <el-collapse-transition>
-            {toggle.value ? (
-              <ul class={["transition-all", "duration-400",'bg-white'] }>
-                {slots.default && slots.default()}
-              </ul>
-            ) : ""}
-          </el-collapse-transition>
-        </li>
+          </li>
+        </div>
       );
     }
     return () => renderMenu();

@@ -8,13 +8,12 @@ export default defineComponent({
   },
   setup() {
     return () => (
-      <div class="content flex">
+      <div class="content flex h-screen">
         <sidbar></sidbar>
         <navbar>
-          <main class="pt-2">
+          <main class="pt-2 overflow-auto">
           <transition name="sale-fade" mode="out-in">
-          <router-view></router-view>
-
+              <router-view></router-view>
           </transition>
           </main>
         </navbar>
