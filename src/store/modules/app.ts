@@ -1,9 +1,17 @@
 import { defineStore } from "pinia";
+type appConfig = {
+  isCollapsed: boolean,
+  isActive:string,
+  catchList: Record<string,any>[]
+}
 export const useAppStore = defineStore('app',{
+  
   state:()=>{
-    return {
+    const res:appConfig={
       isCollapsed: false,
-      isActive:''
+      isActive:'',
+      catchList: []
     }
+    return  res
   }
 })

@@ -2,6 +2,8 @@ import { defineComponent, inject, ref, watch } from "vue";
 import "./subMenu.scss";
 import { useAppStore, storeToRefs } from "@/store/index";
 import { useRoute, useRouter } from "@/router";
+import { indexOf, remove } from "sims-tools";
+// import { useStorage } from "@vueuse/core";
 export default defineComponent({
   props: {
     index: { required: true },
@@ -9,9 +11,10 @@ export default defineComponent({
   },
   setup(props, { slots }) {
     const store = useAppStore();
-    const { isCollapsed, isActive } = storeToRefs(store);
-    const router = useRouter();
 
+    const { isCollapsed, isActive, catchList } = storeToRefs(store);
+    const router = useRouter();
+    const route = useRoute();
     const activeColor = inject("activeColor");
     const showTitle = ref(false);
     watch(isCollapsed, (item) => {
@@ -22,7 +25,19 @@ export default defineComponent({
 
     const itemClick = (_: any) => {
       if (props.index == location.hash.replace("#", "")) return;
-      router.value.push(props.index as string);
+      router.value.push(props.index as string).then((_) => {
+        let object: Record<string, any>;
+        if (route.value && route.value.meta) {
+          object = {
+            title: route.value.meta.title,
+            fullPath: route.value.fullPath,
+            params:route.value .params,
+          };
+          if (indexOf(catchList.value, object) == -1) {
+            catchList.value.push(object);
+          }
+        }
+      });
     };
 
     function renderMenu() {
@@ -55,3 +70,6 @@ export default defineComponent({
     return () => renderMenu();
   },
 });
+function route(route: any) {
+  throw new Error("Function not implemented.");
+}

@@ -2,7 +2,7 @@
   height: calc(100vh - 70px)
 }
  .navbar{
-  @apply w-full
+   width: calc(100% - 16rem);
 }
 .navbar-content{
   border-bottom: 1px solid #eee;

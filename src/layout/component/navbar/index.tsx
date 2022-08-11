@@ -12,14 +12,14 @@ export default defineComponent({
     watch(route,(e)=>{
       console.log(e);
     })
-    let date = ref(escapeDate(new Date(),'yyyy-MM-dd HH:mm:ss') )
-    setInterval(()=>{
-      date.value =( escapeDate(new Date(),'yyyy-MM-dd HH:mm:ss')) as string
-    },1000)
+    let date = ref(escapeDate(new Date(),'yyyy-MM-dd') )
+    // setInterval(()=>{
+    //   date.value =( escapeDate(new Date(),'yyyy-MM-dd HH:mm:ss')) as string
+    // },1000)
     
     return () => (
       <div class="navbar">
-        <nav class="navbar-content  flex " style="align-items: center;height:60px" >
+        <nav class="navbar-content  flex " style="align-items: center;height:50px" >
           <collapse />
           <div>
             344
