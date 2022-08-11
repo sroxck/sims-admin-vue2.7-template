@@ -31,8 +31,8 @@ export default defineComponent({
           object = {
             title: route.value.meta.title,
             fullPath: route.value.fullPath,
-            params:route.value .params,
           };
+          
           if (indexOf(catchList.value, object) == -1) {
             catchList.value.push(object);
           }
