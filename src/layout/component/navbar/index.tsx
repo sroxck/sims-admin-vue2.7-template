@@ -1,4 +1,10 @@
-import { defineComponent, getCurrentInstance, ref, watch, watchEffect } from "vue";
+import {
+  defineComponent,
+  getCurrentInstance,
+  ref,
+  watch,
+  watchEffect,
+} from "vue";
 import "./index.scss";
 import collapse from "./collapse";
 import { useRoute } from "@/router";
@@ -11,26 +17,23 @@ export default defineComponent({
   },
   setup(props, { slots }) {
     const route = useRoute();
-    const bread = ref<any>([])
+    const bread = ref<any>([]);
     let date = ref(escapeDate(new Date(), "yyyy-MM-dd"));
     // setInterval(()=>{
     //   date.value =( escapeDate(new Date(),'yyyy-MM-dd HH:mm:ss')) as string
     // },1000)
-    const levelList = ref<any>([])
+    const levelList = ref<any>([]);
 
-    watch(route,()=>{
-      getMbx()
-    })
-    getMbx()
-    function getMbx(){
+    watch(route, () => {
+      getMbx();
+    });
+    getMbx();
+    function getMbx() {
       let matched = route.value.matched.filter(
-        item => item.meta && item.meta.title
+        (item) => item.meta && item.meta.title
       );
 
-      levelList.value = matched.filter(
-        
-        item => item.meta && item.meta.title 
-      );
+      levelList.value = matched.filter((item) => item.meta && item.meta.title);
     }
     return () => (
       <div class="navbar">
@@ -41,10 +44,9 @@ export default defineComponent({
           <collapse />
           <div>
             <el-breadcrumb separator-class="el-icon-arrow-right">
-              {levelList.value.map((item:any)=>{
-                  return <el-breadcrumb-item >{item.meta.title}</el-breadcrumb-item>
-
-              })}
+              {levelList.value.map((item: any) => (
+                <el-breadcrumb-item>{item.meta.title}</el-breadcrumb-item>
+              ))}
             </el-breadcrumb>
           </div>
           <div
@@ -58,7 +60,22 @@ export default defineComponent({
               <span class="rightFont text-gray-500 ">{date.value}</span>
             </div>
             <span class="mx-3">
-              <i class="el-icon-setting"></i>
+              <el-dropdown>
+                <span class="el-dropdown-link">
+                  <i class="el-icon-setting"></i>
+                </span>
+                <el-dropdown-menu slot="dropdown">
+                  <el-dropdown-item icon="el-icon-plus">
+                    个人信息
+                  </el-dropdown-item>
+                  <el-dropdown-item icon="el-icon-circle-plus-outline">
+                    全屏
+                  </el-dropdown-item>
+                  <el-dropdown-item icon="el-icon-circle-plus">
+                    退出登录
+                  </el-dropdown-item>
+                </el-dropdown-menu>
+              </el-dropdown>
             </span>
           </div>
         </nav>
