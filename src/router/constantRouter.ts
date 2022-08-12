@@ -37,7 +37,7 @@ export const constantRouter= [
     ],
     component:layout
   },
- 
+  
   {
     path: '/',
     redirect:'/analytics',
@@ -104,6 +104,7 @@ export const constantRouter= [
     meta: {
       title: '测试文档',
       alwaysShow: true,
+
       icon: 'el-icon-eleme',
     },
     component: layout
@@ -117,12 +118,15 @@ export const constantRouter= [
           title: 'svg',
           icon: 'el-icon-warning',
           roles: ['admin'],
+
         },
         component: ()=>import('@/views/test')
       }
     ],
     meta: {
       title: '怎么回事',
+      // alwaysShow: true,
+
       icon:'el-icon-warning'
     },
     component: layout

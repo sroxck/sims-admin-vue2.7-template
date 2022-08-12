@@ -25,14 +25,15 @@ export default defineComponent({
 
     const router = useRouter();
     const route = useRoute();
-   
-    
+
     isActive.value = location.hash.replace("#", "");
     const scopedSlots = (item: any) => {
       return {
         title: () => item.meta?.title,
         default: () =>
           item.children?.map((item: any) => {
+            console.log(item, "item");
+
             return item.children?.length > 0 ? (
               <sSubMenu
                 scopedSlots={scopedSlots(item)}
@@ -49,14 +50,16 @@ export default defineComponent({
                 }}
               >
                 <template slot="icon">
-                <i class={[item.meta?.icon?item.meta.icon:'el-icon-']}></i>
+                  <i
+                    class={[item.meta?.icon ? item.meta.icon : "el-icon-"]}
+                  ></i>
                 </template>
                 {item.meta.title}
               </sMenuItem>
             );
           }),
         icon: () => (
-          <i class={[item.meta?.icon?item.meta.icon:'el-icon-']}></i>
+          <i class={[item.meta?.icon ? item.meta.icon : "el-icon-"]}></i>
         ),
       };
     };
@@ -74,8 +77,14 @@ export default defineComponent({
         <logo class="text-center  align-middle  break-words" />
         <sMenu route={route} activeColor="#409eff">
           {router.value.options.routes?.map((item: any) => {
-            return (item.children && item.children.length > 1) ||
-              item.meta.alwaysShow ? (
+            // 逻辑错误, 如果子级只有一个 并且 总是显示,那么 显示父级+子级 否则直接显示子级才对 递归操作
+            return item.children && item.children.length > 1 ? (
+              <sSubMenu
+                scopedSlots={scopedSlots(item)}
+                index={item.path}
+                child={item.children}
+              ></sSubMenu>
+            ) : item.children && item.children.length == 1 && item.meta.alwaysShow ? (
               <sSubMenu
                 scopedSlots={scopedSlots(item)}
                 index={item.path}
@@ -89,7 +98,7 @@ export default defineComponent({
                 }}
               >
                 <template slot="icon">
-                <i class={[item.meta?.icon ]}></i>
+                  <i class={[item.meta?.icon]}></i>
                   {/* <i class={[item.meta.icon]}></i> */}
                 </template>
                 {item.meta.title}
