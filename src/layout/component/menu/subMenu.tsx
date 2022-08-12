@@ -66,20 +66,23 @@ export default defineComponent({
         }
       }
     });
-    if ((props as any).child.length > 0) {
-      (props as any).child.forEach((item: any) => {
-        if (item.path === location.hash.replace("#", "")) {
-          toggle.value = true;
-        }
-        if (item.children?.length > 1) {
-          item.children.forEach((chil: any) => {
-            if (chil.path === location.hash.replace("#", "")) {
-              toggle.value = true;
-            }
-          });
-        }
-      });
+    if(!isCollapsed.value){
+      if ((props as any).child.length > 0) {
+        (props as any).child.forEach((item: any) => {
+          if (item.path === location.hash.replace("#", "")) {
+            toggle.value = true;
+          }
+          if (item.children?.length > 1) {
+            item.children.forEach((chil: any) => {
+              if (chil.path === location.hash.replace("#", "")) {
+                toggle.value = true;
+              }
+            });
+          }
+        });
+      }
     }
+  
     if (props.index == location.hash.replace("#", "")) {
       toggle.value = true;
     }
