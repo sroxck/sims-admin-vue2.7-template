@@ -23,9 +23,9 @@ export default defineComponent({
       // 如果有一个,判断是不是当前页面,不是的话要追加当前
     }
     function tagClose(obj: Record<string, any>) {
-      if (route.value.meta && obj.title == "首页面板") {
-        return;
-      }
+      // if (route.value.meta && obj.title == "首页面板") {
+      //   return;
+      // }
       if (catchList.value.length == 1) return;
 
       remove(catchList.value, obj);
