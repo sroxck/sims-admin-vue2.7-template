@@ -16,10 +16,30 @@ export default defineComponent({
 
     const toggle = ref(false);
     const showTitle = ref(false);
+    const route = useRoute();
+    watch(route, (item) => {
+      console.log(item, props.child, "222222");
+      if (!isCollapsed.value) {
+        (props.child as any).map((item2: any) => {
+          if (item2.path == item.path) {
+            toggle.value = true;
+          }
+          console.log(item2, "iteits");
 
+          if (item2.children?.length > 0) {
+            item2.children.map((item3: any) => {
+              if (item3.path == item.path) {
+                toggle.value = true;
+              }
+            });
+          }
+        });
+      }
+    });
     watch(isCollapsed, (item) => {
       setTimeout(() => {
-        item ? (showTitle.value = true) && (toggle.value = false)
+        item
+          ? (showTitle.value = true) && (toggle.value = false)
           : (showTitle.value = false);
       }, 200);
 
@@ -69,7 +89,7 @@ export default defineComponent({
     function renderMenu() {
       return (
         <div>
-          <li  class="gruop">
+          <li class="gruop">
             <div class="">
               <div
                 class="sMenu leading-extra-loose px-3 h-14 cursor-pointer hover:bg-blue-200 select-none "
@@ -84,7 +104,6 @@ export default defineComponent({
                     placement="right"
                     disabled={!isCollapsed.value}
                     class="toplip "
-                   
                   >
                     <div slot="content"> {slots.title && slots.title()}</div>
                     <div>
@@ -116,7 +135,9 @@ export default defineComponent({
                   <ul class={["transition-all", "duration-400", "bg-white"]}>
                     {slots.default && slots.default()}
                   </ul>
-                ) : ""}
+                ) : (
+                  ""
+                )}
               </el-collapse-transition>
             </div>
           </li>

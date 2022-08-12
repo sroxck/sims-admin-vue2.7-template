@@ -20,7 +20,7 @@ export default defineComponent({
     const { isCollapsed, isActive } = storeToRefs(appStore);
     const { width, height } = useWindowSize();
     watch(width, (e) => {
-      console.log(e);
+      // console.log(e);
     });
 
     const router = useRouter();

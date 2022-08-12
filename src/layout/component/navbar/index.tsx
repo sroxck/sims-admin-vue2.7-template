@@ -8,29 +8,42 @@ export default defineComponent({
     collapse,
   },
   setup(props, { slots }) {
-    const route = useRoute()
-    watch(route,(e)=>{
+    const route = useRoute();
+    watch(route, (e) => {
       console.log(e);
-    })
-    let date = ref(escapeDate(new Date(),'yyyy-MM-dd') )
+    });
+    let date = ref(escapeDate(new Date(), "yyyy-MM-dd"));
     // setInterval(()=>{
     //   date.value =( escapeDate(new Date(),'yyyy-MM-dd HH:mm:ss')) as string
     // },1000)
-    
+
     return () => (
       <div class="navbar">
-        <nav class="navbar-content  flex " style="align-items: center;height:50px" >
+        <nav
+          class="navbar-content  flex "
+          style="align-items: center;height:50px"
+        >
           <collapse />
           <div>
-            344
+            <el-breadcrumb separator-class="el-icon-arrow-right">
+              <el-breadcrumb-item to="{ path: '/' }">首页</el-breadcrumb-item>
+              <el-breadcrumb-item>活动管理</el-breadcrumb-item>
+              <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+              <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+            </el-breadcrumb>
           </div>
-          <div class="float-right justify-end flex" style="flex:1;align-items: center;">
+          <div
+            class="float-right justify-end flex"
+            style="flex:1;align-items: center;"
+          >
             <div class="flex flex-col items-start">
-              <span class="rightFont text-gray-600  font-medium">你好，管理员小陈</span>
+              <span class="rightFont text-gray-600  font-medium">
+                你好，管理员小陈
+              </span>
               <span class="rightFont text-gray-500 ">{date.value}</span>
             </div>
             <span class="mx-3">
-            <i class="el-icon-setting"></i>
+              <i class="el-icon-setting"></i>
             </span>
           </div>
         </nav>
@@ -39,4 +52,3 @@ export default defineComponent({
     );
   },
 });
-

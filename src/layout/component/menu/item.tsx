@@ -22,6 +22,10 @@ export default defineComponent({
         item ? (showTitle.value = true) : (showTitle.value = false);
       }, 200);
     });
+    watch(route,(item)=>{
+      console.log(item,'itemte');
+      isActive.value = item.fullPath
+    })
 
     const itemClick = (_: any) => {
       if (props.index == location.hash.replace("#", "")) return;
