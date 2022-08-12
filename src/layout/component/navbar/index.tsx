@@ -10,7 +10,7 @@ export default defineComponent({
   setup(props, { slots }) {
     const route = useRoute();
     watch(route, (e) => {
-      console.log(e);
+      // console.log(e);
     });
     let date = ref(escapeDate(new Date(), "yyyy-MM-dd"));
     // setInterval(()=>{

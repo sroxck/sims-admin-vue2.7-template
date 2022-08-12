@@ -3,7 +3,6 @@
 </template>
 <script lang="ts" setup>
 import * as echarts from 'echarts'
-console.log(echarts);
 
 import 'echarts/theme/macarons'
 import { onBeforeMount, onMounted, reactive, ref } from 'vue'
@@ -27,9 +26,7 @@ const props = withDefaults(defineProps<propConfig>(), {
     autoResize: true,
 })
 // const props = defineProps<propConfig>()
-console.log(props);
 const root = getCurrentInstance() as any
-console.log(root);
 let chart:{setOption?:Function,dispose?:Function} = {}
 const initChart = () => {
     chart = echarts.init(document.querySelector(`.${props.chartOption.className}`) as HTMLElement, '')

@@ -18,13 +18,11 @@ export default defineComponent({
     const showTitle = ref(false);
     const route = useRoute();
     watch(route, (item) => {
-      console.log(item, props.child, "222222");
       if (!isCollapsed.value) {
         (props.child as any).map((item2: any) => {
           if (item2.path == item.path) {
             toggle.value = true;
           }
-          console.log(item2, "iteits");
 
           if (item2.children?.length > 0) {
             item2.children.map((item3: any) => {

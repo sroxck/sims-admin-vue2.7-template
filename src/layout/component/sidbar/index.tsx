@@ -25,7 +25,7 @@ export default defineComponent({
 
     const router = useRouter();
     const route = useRoute();
-    console.log(router,route,);
+   
     
     isActive.value = location.hash.replace("#", "");
     const scopedSlots = (item: any) => {

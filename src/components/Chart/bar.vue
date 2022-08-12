@@ -3,7 +3,6 @@
 </template>
 <script lang="ts" setup>
 import * as echarts from 'echarts'
-console.log(echarts);
 
 import 'echarts/theme/macarons'
 import { onBeforeMount, onMounted, reactive, ref } from 'vue'
@@ -115,7 +114,6 @@ const setOptions = () => {
             formatter: function (params: any) {
                 let html = '';
                 params.forEach((v: any) => {
-                    console.log(v)
                     html += `<div style="color: #666;font-size: 14px;line-height: 24px">
                 <span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:${color[v.componentIndex]};"></span>
                 ${v.seriesName}.${v.name}

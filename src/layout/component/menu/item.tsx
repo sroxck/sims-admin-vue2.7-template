@@ -23,7 +23,7 @@ export default defineComponent({
       }, 200);
     });
     watch(route,(item)=>{
-      console.log(item,'itemte');
+     
       isActive.value = item.fullPath
     })
 

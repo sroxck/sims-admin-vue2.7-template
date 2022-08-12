@@ -15,7 +15,6 @@ export default defineComponent({
     const store = useAppStore();
 
     const { catchList,isActive } = storeToRefs(store);
-    console.log(catchList.value,'catchList.value');
     const route= useRoute()
     const router= useRouter()
     if(catchList.value.length == 0){
