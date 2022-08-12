@@ -1,22 +1,37 @@
-import { defineComponent, getCurrentInstance, ref, watch } from "vue";
+import { defineComponent, getCurrentInstance, ref, watch, watchEffect } from "vue";
 import "./index.scss";
 import collapse from "./collapse";
 import { useRoute } from "@/router";
-import { escapeDate, findMax } from "sims-tools";
+import { escapeDate, findMax, indexOf, remove } from "sims-tools";
+import item from "../menu/item";
+import { RouteRecord } from "vue-router";
 export default defineComponent({
   components: {
     collapse,
   },
   setup(props, { slots }) {
     const route = useRoute();
-    watch(route, (e) => {
-      // console.log(e);
-    });
+    const bread = ref<any>([])
     let date = ref(escapeDate(new Date(), "yyyy-MM-dd"));
     // setInterval(()=>{
     //   date.value =( escapeDate(new Date(),'yyyy-MM-dd HH:mm:ss')) as string
     // },1000)
+    const levelList = ref<any>([])
 
+    watch(route,()=>{
+      getMbx()
+    })
+    getMbx()
+    function getMbx(){
+      let matched = route.value.matched.filter(
+        item => item.meta && item.meta.title
+      );
+
+      levelList.value = matched.filter(
+        
+        item => item.meta && item.meta.title 
+      );
+    }
     return () => (
       <div class="navbar">
         <nav
@@ -26,10 +41,10 @@ export default defineComponent({
           <collapse />
           <div>
             <el-breadcrumb separator-class="el-icon-arrow-right">
-              <el-breadcrumb-item to="{ path: '/' }">首页</el-breadcrumb-item>
-              <el-breadcrumb-item>活动管理</el-breadcrumb-item>
-              <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-              <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+              {levelList.value.map((item:any)=>{
+                  return <el-breadcrumb-item >{item.meta.title}</el-breadcrumb-item>
+
+              })}
             </el-breadcrumb>
           </div>
           <div
