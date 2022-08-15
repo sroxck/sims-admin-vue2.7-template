@@ -54,7 +54,7 @@ export default defineComponent({
                     class={[item.meta?.icon ? item.meta.icon : "el-icon-"]}
                   ></i>
                 </template>
-                {item.meta.title}
+                {item.meta?.title}
               </sMenuItem>
             );
           }),
@@ -78,19 +78,19 @@ export default defineComponent({
         <sMenu route={route} activeColor="#409eff">
           {router.value.options.routes?.map((item: any) => {
             // 逻辑错误, 如果子级只有一个 并且 总是显示,那么 显示父级+子级 否则直接显示子级才对 递归操作
-            return item.children && item.children.length > 1 ? (
+            return item.children && item.children.length > 1 &&!item.hidden? (
               <sSubMenu
                 scopedSlots={scopedSlots(item)}
                 index={item.path}
                 child={item.children}
               ></sSubMenu>
-            ) : item.children && item.children.length == 1 && item.meta.alwaysShow ? (
+            ) : item.children && item.children.length == 1 && item.meta.alwaysShow &&!item.hidden? (
               <sSubMenu
                 scopedSlots={scopedSlots(item)}
                 index={item.path}
                 child={item.children}
               ></sSubMenu>
-            ) : (
+            ) : !item.hidden? (
               <sMenuItem
                 index={item.path}
                 nativeOnclick={() => {
@@ -101,9 +101,9 @@ export default defineComponent({
                   <i class={[item.meta?.icon]}></i>
                   {/* <i class={[item.meta.icon]}></i> */}
                 </template>
-                {item.meta.title}
+                {item.meta?.title}
               </sMenuItem>
-            );
+            ):void 0
           })}
         </sMenu>
       </div>

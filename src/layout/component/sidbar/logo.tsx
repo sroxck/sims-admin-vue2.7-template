@@ -13,7 +13,7 @@ export default defineComponent({
     const showTitle = ref(false);
     const router = useRouter()
     const toRoot = ()=>{
-      router.value.push('/')
+      router.value.push('/').catch(err=>{})
     }
     watch(isCollapsed, (item) => {
       setTimeout(() => {

@@ -7,7 +7,7 @@ import 'normalize.css/normalize.css'
 import {store} from './store/index'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-
+import '@/utils/permission'
 Vue.use(ElementUI);
 
 new Vue({

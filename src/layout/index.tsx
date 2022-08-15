@@ -33,7 +33,7 @@ export default defineComponent({
         route.value.path !==
         catchList.value[catchList.value.length - 1].fullPath
       ) {
-        router.value.push(catchList.value[catchList.value.length - 1].fullPath);
+        router.value.push(catchList.value[catchList.value.length - 1].fullPath).catch(res=>{})
         isActive.value = catchList.value[catchList.value.length - 1].fullPath;
       }
     }

@@ -1,6 +1,8 @@
 import layout from '@/layout'
 
 export const constantRouter= [
+  { path: '*', redirect: '/404', hidden: true,},
+  { path: '/404',hidden: true,meta:{title:'303'} ,  component:layout},
   {
     path: '/',
     name: 'router-name', // 设定路由的名字，一定要填写不然使用<keep-alive>时会出现各种问题
@@ -38,6 +40,12 @@ export const constantRouter= [
     component:layout
   },
   
+  {
+    path: '/login',
+    meta:{hidden:true},
+    hidden: true,
+    component: ()=>import('@/views/login')
+  },
   {
     path: '/',
     redirect:'/analytics',

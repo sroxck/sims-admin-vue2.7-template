@@ -43,4 +43,5 @@ export const useRoute = () => {
   const router = computed(() => vm.proxy.$route);
   return router;
 };
+
 export default router;

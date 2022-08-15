@@ -41,7 +41,9 @@ export default defineComponent({
             catchList.value.push(object);
           }
         }
-      });
+      }).catch(err=>{
+        
+      })
     };
 
     function renderMenu() {
