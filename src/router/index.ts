@@ -4,6 +4,7 @@ import Test from "../views/test";
 Vue.use(VueRouter);
 import layout from "@/layout";
 import { constantRouter } from "./constantRouter";
+export { asyncRouterMap } from "./asyncRouterMap";
 // const routes: Array<RouteConfig> = [
 //   {
 //     path: '/',
@@ -45,3 +46,4 @@ export const useRoute = () => {
 };
 
 export default router;
+export const routeListS = constantRouter

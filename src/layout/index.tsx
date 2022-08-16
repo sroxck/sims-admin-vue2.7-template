@@ -37,7 +37,7 @@ export default defineComponent({
         isActive.value = catchList.value[catchList.value.length - 1].fullPath;
       }
     }
-
+   
     return () => (
       <div class="content flex h-screen">
         <sidbar></sidbar>
@@ -61,7 +61,7 @@ export default defineComponent({
               })}
             </el-scrollbar>
           </div>
-          <main class="pt-2 overflow-auto">
+          <main class="m-4 overflow-auto shadow-xl rounded-xl">
             <transition name="sale-fade" mode="out-in">
               <router-view></router-view>
             </transition>

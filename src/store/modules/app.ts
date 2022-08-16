@@ -1,8 +1,10 @@
 import { defineStore } from "pinia";
+import { RouteConfig } from "vue-router";
 type appConfig = {
   isCollapsed: boolean,
   isActive:string,
-  catchList: Record<string,any>[]
+  catchList: Record<string,any>[],
+  routerList:any[]
 }
 export const useAppStore = defineStore('app',{
   
@@ -10,7 +12,8 @@ export const useAppStore = defineStore('app',{
     const res:appConfig={
       isCollapsed: false,
       isActive:'',
-      catchList: []
+      catchList: [],
+      routerList:[]
     }
     return  res
   }

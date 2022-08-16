@@ -17,7 +17,7 @@ export default defineComponent({
   },
   setup() {
     const appStore = useAppStore();
-    const { isCollapsed, isActive } = storeToRefs(appStore);
+    const { isCollapsed, isActive,routerList } = storeToRefs(appStore);
     const { width, height } = useWindowSize();
     watch(width, (e) => {
       // console.log(e);
@@ -69,14 +69,14 @@ export default defineComponent({
         style="border-right: 1px solid #eee;height: 100%;"
         class={[
           "sidebarClass",
-          isCollapsed.value ? "w-16" : "w-64",
+          isCollapsed.value ? "w-14" : "w-64",
           "transition-all",
           "duration-400",
         ]}
       >
         <logo class="text-center  align-middle  break-words" />
         <sMenu route={route} activeColor="#409eff">
-          {router.value.options.routes?.map((item: any) => {
+          {routerList?.value.map((item: any) => {
             // 逻辑错误, 如果子级只有一个 并且 总是显示,那么 显示父级+子级 否则直接显示子级才对 递归操作
             return item.children && item.children.length > 1 &&!item.hidden? (
               <sSubMenu

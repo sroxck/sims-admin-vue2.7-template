@@ -1,5 +1,7 @@
  main {
-  height: calc(100vh - 70px)
+  height: calc(100vh - 70px - 3.5rem);
+  padding: 20px;
+  border: 1px solid #eee;
 }
  .navbar{
   //  width: calc(100% - 16rem);

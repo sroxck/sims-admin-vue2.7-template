@@ -23,10 +23,17 @@ export default defineComponent({
       }, 200);
     });
     watch(route,(item)=>{
-     
+     console.log(item,'item');
       isActive.value = item.fullPath
+      const obj = {
+        fullPath: item.fullPath,
+        title:item.meta?.title
+      }
+      if (indexOf(catchList.value, obj) == -1) {
+        catchList.value.push(obj);
+      }
     })
-
+   
     const itemClick = (_: any) => {
       if (props.index == location.hash.replace("#", "")) return;
       router.value.push(props.index as string).then((_) => {
@@ -51,9 +58,10 @@ export default defineComponent({
         <li
           class="px-3 leading-extra-loose h-14 cursor-pointer hover:bg-blue-200  "
           onClick={itemClick}
+          style={{borderRadius:isCollapsed.value ? '5px':'',overflow:isCollapsed.value ? 'hidden' : '',background: isActive.value == props.index ?'#eee':''}}
         >
           <div class="title ">
-            <el-tooltip placement="right" disabled={!isCollapsed.value}>
+            <el-tooltip placement="right" disabled={!isCollapsed.value} >
               <div slot="content"> {slots.default && slots.default()} </div>
               <div>
                 {slots.icon ? slots.icon() : <i class="el-icon-"></i>}

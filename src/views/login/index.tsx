@@ -11,8 +11,8 @@ export default defineComponent({
     function login(){
        loginStore.login({account:account.value, password:password.value}).then((res)=>{
 
-        if(res == 'ok'){
-          router.value.push('/')
+        if(res ){
+          router.value.push('/home333')
         }
       })
      

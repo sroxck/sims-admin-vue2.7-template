@@ -90,7 +90,8 @@ export default defineComponent({
     function renderMenu() {
       return (
         <div>
-          <li class="gruop">
+          
+          <li class="gruop" style={{borderRadius:isCollapsed.value ? '5px':'',overflow:isCollapsed.value ? 'hidden' : '',background: isActive.value == props.index ?'#eee':''}}>
             <div class="">
               <div
                 class="sMenu leading-extra-loose px-3 h-14 cursor-pointer hover:bg-blue-200 select-none "
