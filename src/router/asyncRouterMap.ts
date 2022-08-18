@@ -4,7 +4,6 @@ export const asyncRouterMap= [
  
   {
     path: '/',
-    redirect:'/home333',
     name: 'router-name', // 设定路由的名字，一定要填写不然使用<keep-alive>时会出现各种问题
     meta: {
       roles: ['admin'], // 设置该路由进入的权限，支持多个权限叠加
@@ -12,7 +11,7 @@ export const asyncRouterMap= [
       icon: 'el-icon-eleme', // 设置该路由的图标，支持 svg-class，也支持 el-icon-x element-ui 的 icon
       noCache: true, // 如果设置为true，则不会被 <keep-alive> 缓存(默认 false)
       breadcrumb: false, //  如果设置为false，则不会在breadcrumb面包屑中显示(默认 true)
-      alwaysShow: true, // 当只有一个子级的时候是否显示根节点
+      // alwaysShow: true, // 当只有一个子级的时候是否显示根节点
       hidden: false, // 是否不在菜单栏中显示
       affix: true, // 如果设置为true，它则会固定在tags-view中(默认 false)
       // 当路由设置了该属性，则会高亮相对应的侧边栏。
@@ -21,33 +20,24 @@ export const asyncRouterMap= [
     },
     children: [
       {
-        path: '/home333',
+        path: '/',
         meta: {
           title: '首页面板',
           roles: ['admin'],
         },
-        component: ()=>import('@/views/test')
-      },
-      {
-        path: '/analy444tics',
-        meta: {
-          title: '数据展示',
-          roles: ['admin'],
-        },
         component: ()=>import('@/views/demo.vue')
-      }
+      },
     ],
     component:layout
   },
 
   {
-    path: '/',
+    path: '/ces',
     children: [
       {
         path: '/home',
         meta: {
           title: '综合面板',
-          icon: 'el-icon-eleme',
           roles: ['admin'],
         },
        
@@ -57,7 +47,6 @@ export const asyncRouterMap= [
         path: '/analytics',
         meta: {
           title: '数据分析',
-          icon: 'el-icon-phone',
           roles: ['admin'],
         },
         component: ()=>import('@/views/demo.vue')
