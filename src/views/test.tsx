@@ -1,6 +1,6 @@
 import { ref, onMounted, defineComponent, computed, reactive } from "vue";
 import { useParallax } from "@vueuse/core";
-import fromItemDemo from "@/views/form/index";
+import fromItemDemo from "@/views/form/from";
 import { Form, Row, Col } from "element-ui";
 import schma from "./form/schma";
 import "./test.scss";

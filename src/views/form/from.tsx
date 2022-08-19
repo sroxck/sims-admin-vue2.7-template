@@ -108,8 +108,8 @@ export default defineComponent({
     }
     return () => {
       return (
-        <Form>
-          <Row>
+        <Form props={props.config}>
+          <Row gutter={10}>
             {isArray(props.config.property[0]) ? (
               new Array(props.config.property.length)
                 .fill("never")

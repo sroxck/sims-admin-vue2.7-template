@@ -3,9 +3,13 @@ import chartBox from '@/components/Chart/index.vue'
 import chartBox1 from '@/components/Chart/bar.vue'
 import chartBox2 from '@/components/Chart/bar1.vue'
 import chartBox3 from '@/components/Chart/bar2.vue'
+import formDemo from '../../dist'
+import Vue from 'vue'
+Vue.use(formDemo)
 </script>
 <template>
   <div class="home">
+    <formDemo></formDemo>
     <section class="row">
       <div class="w-1/2 pr-3">
         <div class="card">

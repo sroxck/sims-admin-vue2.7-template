@@ -1,8 +1,13 @@
 import { defineComponent, ref } from "vue";
+import Vue from "vue";
 import { useLoginStore } from "@/store/modules/login";
 import { Message } from "element-ui";
 import { useRouter } from "@/router";
+
 export default defineComponent({
+  // components:{
+  //   formDemo
+  // },
   setup() {
     const loginStore = useLoginStore()
     let account = ref("");
@@ -19,6 +24,7 @@ export default defineComponent({
     }
     return () => (
       <div>
+        {/* <formDemo></formDemo> */}
         <el-input
           style="width:100px"
           value={account.value}
