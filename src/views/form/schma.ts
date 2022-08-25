@@ -10,7 +10,7 @@ export default {
   showMessage:'', // 是否显示校验错误信息	
   inlineMessage:'', // 是否以行内形式展示校验信息	
   statusIcon:false, // 是否在输入框中显示校验结果反馈图标	
-  disabled:false, // 是否禁用该表单内的所有组件
+  disabled:true, // 是否禁用该表单内的所有组件
   row:{
 
   },
