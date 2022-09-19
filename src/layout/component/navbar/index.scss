@@ -1,14 +1,14 @@
  main {
   height: calc(100vh - 70px - 3.5rem);
   padding: 20px;
-  border: 1px solid #eee;
+  // border: 1px solid #eee;
 }
  .navbar{
   //  width: calc(100% - 16rem);
   flex: 1;
 }
 .navbar-content{
-  border-bottom: 1px solid #eee;
+  // border-bottom: 1px solid #eee;
 }
 .rightFont {
   @apply font-sans dark:text-white text-sm 

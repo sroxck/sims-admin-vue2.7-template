@@ -1,11 +1,13 @@
+@import '@style/variable.scss';
+
 .logo {
   line-height:4rem;
-  
   @apply h-16  cursor-pointer align-middle
 }
 ul li {
   font-size: 14px;
-  color: #303133;
+  font-weight:$sidebarFontWeight;
+  color: $sidebarFontColor ;
 }
 
 // @media screen and (min-width: 768px) {

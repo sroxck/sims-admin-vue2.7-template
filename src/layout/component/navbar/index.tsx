@@ -19,9 +19,9 @@ export default defineComponent({
     const route = useRoute();
     const bread = ref<any>([]);
     let date = ref(escapeDate(new Date(), "yyyy-MM-dd"));
-    // setInterval(()=>{
-    //   date.value =( escapeDate(new Date(),'yyyy-MM-dd HH:mm:ss')) as string
-    // },1000)
+    setInterval(()=>{
+      date.value =( escapeDate(new Date(),'yyyy-MM-dd HH:mm:ss')) as string
+    },1000)
     const levelList = ref<any>([]);
 
     watch(route, () => {
@@ -35,10 +35,15 @@ export default defineComponent({
 
       levelList.value = matched.filter((item) => item.meta && item.meta.title);
     }
+    const logout = () => {
+      localStorage.removeItem('pinia-app')
+      localStorage.removeItem('pinia-login')
+      location.reload()
+    }
     return () => (
       <div class="navbar">
         <nav
-          class="navbar-content  flex "
+          class="  flex "
           style="align-items: center;height:50px"
         >
           <collapse />
@@ -65,14 +70,17 @@ export default defineComponent({
                   <i class="el-icon-setting"></i>
                 </span>
                 <el-dropdown-menu slot="dropdown">
-                  <el-dropdown-item icon="el-icon-plus">
+                  {/* <el-dropdown-item icon="el-icon-plus">
                     个人信息
                   </el-dropdown-item>
                   <el-dropdown-item icon="el-icon-circle-plus-outline">
                     全屏
-                  </el-dropdown-item>
-                  <el-dropdown-item icon="el-icon-circle-plus">
-                    退出登录
+                  </el-dropdown-item> */}
+                  <el-dropdown-item icon="el-icon-circle-plus" >
+                    <span onClick={logout}>
+                      退出登录
+
+                    </span>
                   </el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>

@@ -1,9 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-*{
+
+* {
   @apply select-none
 }
+
 /* vue 过渡动画样式 */
 .sale-fade-enter-active,
 .sale-fade-leave-active {
@@ -12,10 +14,25 @@
 
 .sale-fade-enter {
   transform: scale(0.87);
-  opacity: 0;
+  opacity  : 0;
 }
 
 .sale-fade-leave-to {
   transform: scale(1.08);
-  opacity: 0;
+  opacity  : 0;
+}
+
+.el-input__inner {
+  border: 1px solid #8794ae !important;
+  border-radius: 8px !important;
+}
+.contentBox {
+  height: 100% !important;
+  //min-height: 37rem;
+  // overflow: scroll;
+  // height: 100%;
+  // overflow-x: hidden;
+}
+#DialogContainer .el-dialog__wrapper{
+ z-index: 3888 !important;
 }

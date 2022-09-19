@@ -22,7 +22,7 @@ export const asyncRouterMap= [
       {
         path: '/',
         meta: {
-          title: '首页面板',
+          title: '首页',
           roles: ['admin'],
         },
         component: ()=>import('@/views/demo.vue')
@@ -30,160 +30,228 @@ export const asyncRouterMap= [
     ],
     component:layout
   },
-
-  {
-    path: '/ces',
+ {
+    path: '/test',
     children: [
       {
-        path: '/home',
+        path: '/lcdata',
         meta: {
-          title: '综合面板',
+          title: '临床数据',
           roles: ['admin'],
         },
        
-        component: ()=>import('@/views/test')
+        component: ()=>import('@/views/clinical')
       },
       {
-        path: '/analytics',
+        path: '/form',
         meta: {
-          title: '数据分析',
+          title: '表单生成器Demo',
           roles: ['admin'],
         },
-        component: ()=>import('@/views/demo.vue')
+        component: ()=>import('@/views/test')
       }
     ],
     meta: {
-      title: '分析数据',
+      title: '数据管理',
       icon: 'el-icon-eleme',
     },
     component: layout
   },
-  {
-    path: '/doc',
-    children: [
-      {
-        path: '/doc',
-        meta: {
-          title: '官方文档',
-          // icon: 'el-icon-goods',
-          roles: ['admin'],
-        },
-        children:[
-          {
-            path: '/444',
-            meta: {
-              title: '测试层级1-1',
-              // icon: 'el-icon-eleme',
-              roles: ['admin'],
-            },
-            component: ()=>import('@/views/test')
-          },
-          {
-            path: '/33333',
-            meta: {
-              title: '测试层级1-2',
-              // icon: 'el-icon-phone',
-              roles: ['admin'],
-            },
-            component: ()=>import('@/views/demo.vue')
-          }
-        ],
-        component: ()=>import('@/views/test')
-      }
-    ],
-    meta: {
-      title: '测试文档',
-      alwaysShow: true,
+  // {
+  //   path: '/ces',
+  //   children: [
+  //     {
+  //       path: '/home',
+  //       meta: {
+  //         title: '综合面板',
+  //         roles: ['admin'],
+  //       },
+       
+  //       component: ()=>import('@/views/test')
+  //     },
+  //     {
+  //       path: '/analytics',
+  //       meta: {
+  //         title: '数据分析',
+  //         roles: ['admin'],
+  //       },
+  //       component: ()=>import('@/views/demo.vue')
+  //     }
+  //   ],
+  //   meta: {
+  //     title: '分析数据',
+  //     icon: 'el-icon-eleme',
+  //   },
+  //   component: layout
+  // },
+  // {
+  //   path: '/doc',
+  //   children: [
+  //     {
+  //       path: '/doc',
+  //       meta: {
+  //         title: '官方文档',
+  //         // icon: 'el-icon-goods',
+  //         roles: ['admin'],
+  //       },
+  //       children:[
+  //         {
+  //           path: '/444',
+  //           meta: {
+  //             title: '测试层级1-1',
+  //             // icon: 'el-icon-eleme',
+  //             roles: ['admin'],
+  //           },
+  //           component: ()=>import('@/views/test')
+  //         },
+  //         {
+  //           path: '/33333',
+  //           meta: {
+  //             title: '测试层级1-2',
+  //             // icon: 'el-icon-phone',
+  //             roles: ['admin'],
+  //           },
+  //           component: ()=>import('@/views/demo.vue')
+  //         }
+  //       ],
+  //       component: ()=>import('@/views/test')
+  //     }
+  //   ],
+  //   meta: {
+  //     title: '测试文档',
+  //     alwaysShow: true,
 
-      icon: 'el-icon-eleme',
-    },
-    component: layout
-  },
-  {
-    path: '/svg',
-    children: [
-      {
-        path: '/svg',
-        meta: {
-          title: 'svg',
-          icon: 'el-icon-warning',
-          roles: ['admin'],
+  //     icon: 'el-icon-eleme',
+  //   },
+  //   component: layout
+  // },
+  // {
+  //   path: '/svg',
+  //   children: [
+  //     {
+  //       path: '/svg',
+  //       meta: {
+  //         title: 'svg',
+  //         icon: 'el-icon-warning',
+  //         roles: ['admin'],
 
-        },
-        component: ()=>import('@/views/test')
-      }
-    ],
-    meta: {
-      title: '怎么回事',
-      // alwaysShow: true,
+  //       },
+  //       component: ()=>import('@/views/test')
+  //     }
+  //   ],
+  //   meta: {
+  //     title: '怎么回事',
+  //     // alwaysShow: true,
 
-      icon:'el-icon-warning'
-    },
-    component: layout
-  },
-  {
-    path: '/fsf', // 有个坑要填,如果子级大于2个,那个父级的path要设置一个唯一值
-    children: [
-      {
-        path: '/bar',
-        meta: {
-          title: '柱状图',
+  //     icon:'el-icon-warning'
+  //   },
+  //   component: layout
+  // },
+  // {
+  //   path: '/fsf', // 有个坑要填,如果子级大于2个,那个父级的path要设置一个唯一值
+  //   children: [
+  //     {
+  //       path: '/bar',
+  //       meta: {
+  //         title: '柱状图',
           
-          roles: ['admin'],
-        },
-        component: ()=>import('@/views/test')
-      },
-      {
-        path: '/line',
-        meta: {
-          title: '折线图',
+  //         roles: ['admin'],
+  //       },
+  //       component: ()=>import('@/views/test')
+  //     },
+  //     {
+  //       path: '/line',
+  //       meta: {
+  //         title: '折线图',
           
-          roles: ['admin'],
-        },
-        component: ()=>import('@/views/test')
-      },
-      {
-        path: '/pie',
-        meta: {
-          title: '饼图',
+  //         roles: ['admin'],
+  //       },
+  //       component: ()=>import('@/views/test')
+  //     },
+  //     {
+  //       path: '/pie',
+  //       meta: {
+  //         title: '饼图',
           
-          roles: ['admin'],
-        },
-        component: ()=>import('@/views/test')
-      }
-    ],
-    meta: {
-      title: '可视化',
-      icon:'el-icon-zoom-out'
-    },
-    component: layout
-  },
-  {
-    path: '/44', // 有个坑要填,如果子级大于2个,那个父级的path要设置一个唯一值
-    children: [
-      {
-        path: '/dragTable',
-        meta: {
-          title: '可拖拽表格',
-          roles: ['admin'],
-        },
-        component: ()=>import('@/views/test')
-      },
-      {
-        path: '/editTable',
-        meta: {
-          title: '可编辑表格',
-          roles: ['admin'],
-        },
-        component: ()=>import('@/views/test')
-      },
-    ],
-    meta: {
-      title: '表格',
-      icon:'el-icon-camera'
-    },
-    component: layout
-  },
+  //         roles: ['admin'],
+  //       },
+  //       component: ()=>import('@/views/test')
+  //     }
+  //   ],
+  //   meta: {
+  //     title: '可视化',
+  //     icon:'el-icon-zoom-out'
+  //   },
+  //   component: layout
+  // },
+  // {
+  //   path: '/44', // 有个坑要填,如果子级大于2个,那个父级的path要设置一个唯一值
+  //   children: [
+  //     {
+  //       path: '/dragTable',
+  //       meta: {
+  //         title: '可拖拽表格',
+  //         roles: ['admin'],
+  //       },
+  //       component: ()=>import('@/views/test')
+  //     },
+  //     {
+  //       path: '/editTable',
+  //       meta: {
+  //         title: '可编辑表格',
+  //         roles: ['admin'],
+  //       },
+  //       component: ()=>import('@/views/test')
+  //     },
+  //   ],
+  //   meta: {
+  //     title: '表格',
+  //     icon:'el-icon-camera'
+  //   },
+  //   component: layout
+  // },
+  // {
+  //   path: '/fsf', // 有个坑要填,如果子级大于2个,那个父级的path要设置一个唯一值
+  //   children: [
+  //     {
+  //       path: '/dragTable22',
+  //       meta: {
+  //         title: '用户管理',
+  //         roles: ['admin'],
+  //       },
+  //       component: ()=>import('@/views/system/user/index.vue')
+  //     },
+  //     {
+  //       path: '/role',
+  //       meta: {
+  //         title: '角色管理',
+  //         roles: ['admin'],
+  //       },
+  //       component: ()=>import('@/views/system/role/index.vue')
+  //     },
+  //     {
+  //       path: '/editTable2',
+  //       meta: {
+  //         title: '菜单管理',
+  //         roles: ['admin'],
+  //       },
+  //       component: ()=>import('@/views/system/menu/index.vue')
+  //     },
+  //     {
+  //       path: '/editTable3',
+  //       meta: {
+  //         title: '接口管理',
+  //         roles: ['admin'],
+  //       },
+  //       component: ()=>import('@/views/system/access/index.vue')
+  //     },
+  //   ],
+  //   meta: {
+  //     title: '系统管理',
+  //     icon:'el-icon-camera'
+  //   },
+  //   component: layout
+  // },
   { path: '*', redirect: '/404', hidden: true,},
   { path: '/404',hidden: true,meta:{title:'303'} ,  component:layout},
 ]

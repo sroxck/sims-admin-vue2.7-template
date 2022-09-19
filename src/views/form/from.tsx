@@ -6,9 +6,21 @@ import {
   reactive,
   ref,
 } from "vue";
+import Vue, { VNode } from 'vue'
+declare global {
+  namespace JSX {
+    interface Element extends VNode { }
+    interface ElementClass extends Vue { }
+    interface IntrinsicElements {
+      [elem: string]: any
+    }
+  }
+}
+
 import { FormItem, Option, Radio, Row, Col, Form } from "element-ui";
 import type { Schema } from "./useForm";
 import { isArray } from "sims-tools";
+
 import useForm from "./useForm";
 export default defineComponent({
   name: "fromItemDemo",
@@ -58,8 +70,8 @@ export default defineComponent({
                 }}
                 placeholder={itemConfig.placeholder}
                 value={itemConfig.value}
-                // nativeOn={itemConfig.nativeEvent}
-                // on={itemConfig.event}
+              // nativeOn={itemConfig.nativeEvent}
+              // on={itemConfig.event}
               >
                 {renderOption(itemConfig.type, itemConfig.optionData)}
               </itemConfig.type>
@@ -76,8 +88,8 @@ export default defineComponent({
                 }}
                 placeholder={itemConfig.placeholder}
                 value={itemConfig.value}
-                // nativeOn={itemConfig.nativeEvent}
-                // on={itemConfig.event}
+              // nativeOn={itemConfig.nativeEvent}
+              // on={itemConfig.event}
               >
                 {renderOption(itemConfig.type, itemConfig.optionData)}
               </itemConfig.type>
@@ -86,25 +98,25 @@ export default defineComponent({
         }
       });
     }
-    function formItemRender(index:number|null){
+    function formItemRender(index: number | null) {
       const list = index == null ? props.config.property : props.config.property[index]
-      const span =  index == null ? 24 : 24 / props.config.property.length
+      const span = index == null ? 24 : 24 / props.config.property.length
       return <Col span={span}>
-      {list.map((config: any) => {
-        return (
-          <FormItem props={config}>
-            <config.type
-              value={formData[config.formKey]}
-              onInput={(e: any) =>
-                (formData[config.formKey] = e)
-              }
-            >
-              {renderOption(config.type,config.optionData)}
-            </config.type>
-          </FormItem>
-        );
-      })}
-    </Col>
+        {list.map((config: any) => {
+          return (
+            <FormItem props={config}>
+              <config.type
+                value={formData[config.formKey]}
+                onInput={(e: any) =>
+                  (formData[config.formKey] = e)
+                }
+              >
+                {renderOption(config.type, config.optionData)}
+              </config.type>
+            </FormItem>
+          );
+        })}
+      </Col>
     }
     return () => {
       return (

@@ -1,5 +1,5 @@
-import { login } from "@/types";
-import { require } from "@/utils/index";
+import {type login } from "@/types";
+import { request } from "@/utils/index";
 export function apiLogin(data:login):string{
   if(data.account == 'admin' && data.password == '123456'){
     return '12312319054019450190'
@@ -7,3 +7,11 @@ export function apiLogin(data:login):string{
     return ''
   }
 } 
+export function api_getList(params: any) {
+  return request({
+    url: '/table/list',
+    method: 'post',
+    params
+  })
+}
+

@@ -5,7 +5,7 @@ import "./index.scss";
 import { useAppStore, storeToRefs } from "@/store";
 import { useRoute, useRouter } from "@/router";
 import { indexOf, remove } from "sims-tools";
-
+import ElementSideBar from './component/Sidebar/index.vue'
 export default defineComponent({
   components: {
     sidbar,
@@ -13,7 +13,7 @@ export default defineComponent({
   },
   setup() {
     const store = useAppStore();
-
+  
     const { catchList, isActive } = storeToRefs(store);
     const route = useRoute();
     const router = useRouter();
@@ -39,9 +39,11 @@ export default defineComponent({
     }
    
     return () => (
-      <div class="content flex h-screen">
-        <sidbar></sidbar>
-        <navbar>
+      <div class="content  h-screen">
+        <sidbar style="float:left;width:230px;overflow: auto;"></sidbar>
+        {/* 原生element菜单栏组件 */}
+        {/* <ElementSideBar></ElementSideBar> */}
+        <navbar class="navbar-content" >
           <div class="tags-view-container">
             <el-scrollbar class="scrollBar">
               {catchList.value.map((item, index) => {
@@ -50,8 +52,9 @@ export default defineComponent({
                     type={
                       item.fullPath == route.value.path ? "primary" : "info"
                     }
-                    closable={item.fullPath != "/home333"}
-                    style="height:30px;line-height: 30px;"
+                    closable={item.fullPath ==route.value.path }
+                    style="height:100%;"
+                    class={[item.fullPath == route.value.path ? "isActive" : ""]}
                     onClose={() => tagClose(item)}
                     disable-transitions
                   >
@@ -61,7 +64,7 @@ export default defineComponent({
               })}
             </el-scrollbar>
           </div>
-          <main class="m-4 overflow-auto shadow-xl rounded-xl">
+          <main class="m-4 mt-0 overflow-auto shadow-xl rounded-xl main-content pt-6">
             <transition name="sale-fade" mode="out-in">
               <router-view></router-view>
             </transition>

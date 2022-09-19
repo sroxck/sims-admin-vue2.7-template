@@ -74,8 +74,9 @@ export default defineComponent({
           "duration-400",
         ]}
       >
+        <el-scrollbar>
         <logo class="text-center  align-middle  break-words" />
-        <sMenu route={route} activeColor="#409eff">
+        <sMenu route={route} activeColor="rgb(73, 90, 191)">
           {routerList?.value.map((item: any) => {
             // 逻辑错误, 如果子级只有一个 并且 总是显示,那么 显示父级+子级 否则直接显示子级才对 递归操作
             return item.children && item.children.length > 1 &&!item.hidden? (
@@ -106,6 +107,8 @@ export default defineComponent({
             ):void 0
           })}
         </sMenu>
+        </el-scrollbar>
+      
       </div>
     );
   },

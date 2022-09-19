@@ -56,9 +56,9 @@ export default defineComponent({
     function renderMenu() {
       return (
         <li
-          class="px-3 leading-extra-loose h-14 cursor-pointer hover:bg-blue-200  "
+          class="px-6 leading-extra-loose cursor-pointer hover:bg-blue-200  "
           onClick={itemClick}
-          style={{borderRadius:isCollapsed.value ? '5px':'',overflow:isCollapsed.value ? 'hidden' : '',background: isActive.value == props.index ?'#eee':''}}
+          style={{borderRadius:isCollapsed.value ? '5px':'',overflow:isCollapsed.value ? 'hidden' : '',height:'60px'}}
         >
           <div class="title ">
             <el-tooltip placement="right" disabled={!isCollapsed.value} >

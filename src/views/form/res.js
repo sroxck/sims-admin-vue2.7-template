@@ -1,1 +1,0 @@
-export {fromDemo} from './from.tsx'

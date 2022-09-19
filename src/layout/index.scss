@@ -1,30 +1,114 @@
-.card{
-  height: 40px;
-  border-bottom: 1px solid #eee;
-  display: flex;
-    align-items: center;
- gap: 10px;
-    padding: 0 10px;
-    width: 100%;
+@import '@style/variable.scss';
+
+.el-scrollbar__view .isActive {
+  background-color       : #fff !important;
+  border-color           : #fff !important;
+  border-top-left-radius : 12px !important;
+  border-top-right-radius: 12px !important;
 }
-.scrollBar .el-scrollbar__view{
+
+// .card {
+//   height       : 40px;
+//   border-bottom: 1px solid #eee;
+//   display      : flex;
+//   align-items  : center;
+//   gap          : 10px;
+//   padding      : 0 10px;
+//   width        : 100%;
+// }
+
+.scrollBar .el-scrollbar__view {
   padding: 0 5px;
   display: flex;
-  gap: 10px;
+  gap    : 10px;
+  margin : 0 2rem;
+  height : 100%;
 }
-.scrollBar{
+.scrollBar .el-scrollbar__wrap {
+height: 60px !important;
+}
+.isActive::after {
+  content         : "";
+  height          : 20px;
+  width           : 20px;
+  position        : absolute;
+  width           : 20px;
+  height          : 20px;
+  display         : inline-block;
+  position        : absolute;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAFqADAAQAAAABAAAAFgAAAAAcITNaAAAA4UlEQVQ4EbWUsQ3CMBBFEyoSiYKSPkUGYAEKaNmGBZiCmmUYhJoOKiTzPoqRMQSR2HfST+zI9/Rztq8oDMI510wMuEKagVsrx6vslaC+NbpZON7gtrIAby3KMKMMF+RyO97hdp7VMSYX6Cq3imxwWIcnsXtkAcNaontWMDCV4BxCNU5yTP4UnQSKIxV8jIF+PgpMspz2QgUfDCZHNf36+wL6GAQmSbv/sVEeFr7/ApMglzqnb0cqBMXjn2AW6+7v0etGxYC+eRmTWVjzTa1PXUoadfdLQA3JUovU+deoQknxAPu0fpzdGk3NAAAAAElFTkSuQmCC);
+  bottom          : -2px;
+  left            : -20px;
+}
+
+.el-tag {
+  position: relative;
+}
+
+.isActive {
+  font-weight: bold;
+}
+
+.isActive::before {
+  content         : "";
+  height          : 20px;
+  width           : 20px;
+  position        : absolute;
+  width           : 20px;
+  height          : 20px;
+  display         : inline-block;
+  position        : absolute;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWCAYAAADAQbwGAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAFKADAAQAAAABAAAAFgAAAADIHaOdAAAA1klEQVQ4EWP4//+/CgMVARPQLKobqEFFBzKAXOhITQMZgGH4DYi5qGUoyIWcQOxGTQNBZvlTy0CQl0HgHRDzUsNQkJdBQBCIy8AsSgmw+yDEVyAlSal5MC/DzJ1JbQP/AE02ochQmNOQ6CdANvleRzIImXkCyOEgy6XIpqCxF1PbQJD5i4GYNJeiuQobF+R94sMUmwlYxEARRVzsY9GMSwiUpGYCMX7X4tKNRxyUo5qBGGveZwRpJCs2GRjeA/VthOJdjIyM30DmUGIgSD8MfAcydgPxfgCHN4URXZ1DPgAAAABJRU5ErkJggg==);
+  bottom          : -2px;
+  right           : -16px;
+}
+
+.el-tag {
+  // background-color: #fff !important;
+  color                     : #1d2346 !important;
+  background-color          : #eff2f5 !important;
+  border                    : none;
+  border-color              : #eff2f5 !important;
+  // border-color: #fff !important;
+  // border-top-left-radius: 12px !important;
+  // border-top-right-radius: 12px !important;
+  /* line-height            : 4px; */
+  /* line-height            : 4px; */
+  padding                   : 5px 20px !important;
+  font-size                 : 14px !important;
+  line-height               : 32px !important;
+}
+
+.el-tag-pseudo ::before {
+  content: '';
+  display: block;
+
+}
+
+.scrollBar {
   white-space: nowrap;
-    position: relative;
-    overflow: hidden;
-    width: 100%;
+  position   : relative;
+  overflow   : hidden;
+  width      : 100%;
 }
-.tags-view-container{
-      width: 100%;
-    display: grid;
-    height: 40px;
-    padding: 5px 0 0 0;
-    background: #fff;
-    border-bottom: 1px solid #d8dce5;
-    -webkit-box-shadow: 0 1px 3px 0 rgb(0 0 0 / 12%), 0 0 3px 0 rgb(0 0 0 / 4%);
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 12%), 0 0 3px 0 rgb(0 0 0 / 4%);
+
+.tags-view-container {
+  width                : 100%;
+  display              : grid;
+  height               : 45px;
+  padding              : 5px 0 0 0;
+  // border-bottom     : 1px solid #d8dce5;
+  // -webkit-box-shadow: 0 1px 3px 0 rgb(0 0 0 / 12%), 0 0 3px 0 rgb(0 0 0 / 4%);
+  // box-shadow        : 0 1px 3px 0 rgb(0 0 0 / 12%), 0 0 3px 0 rgb(0 0 0 / 4%);
+}
+
+.main-content {
+  background-color: $mainBackgroundColor;
+}
+
+.navbar-content {
+  background-color: $rightContentBackgroundColor;
+  width           : calc(100% - 230px);
+  float           : right;
+  height          : 100%;
 }

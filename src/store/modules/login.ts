@@ -26,7 +26,7 @@ export const useLoginStore = defineStore('login', {
           resolve(token)
           Message.success('登录成功')
           appStore.catchList.push({
-            title: '首页面板',
+            title: '首页',
             fullPath: '/',
           })
         }

@@ -1,1 +1,2 @@
-export {default as require} from './require'
+export {default as request} from './require'
+export * from './dom'
