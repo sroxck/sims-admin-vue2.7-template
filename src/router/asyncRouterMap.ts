@@ -210,48 +210,48 @@ export const asyncRouterMap= [
   //   },
   //   component: layout
   // },
-  // {
-  //   path: '/fsf', // 有个坑要填,如果子级大于2个,那个父级的path要设置一个唯一值
-  //   children: [
-  //     {
-  //       path: '/dragTable22',
-  //       meta: {
-  //         title: '用户管理',
-  //         roles: ['admin'],
-  //       },
-  //       component: ()=>import('@/views/system/user/index.vue')
-  //     },
-  //     {
-  //       path: '/role',
-  //       meta: {
-  //         title: '角色管理',
-  //         roles: ['admin'],
-  //       },
-  //       component: ()=>import('@/views/system/role/index.vue')
-  //     },
-  //     {
-  //       path: '/editTable2',
-  //       meta: {
-  //         title: '菜单管理',
-  //         roles: ['admin'],
-  //       },
-  //       component: ()=>import('@/views/system/menu/index.vue')
-  //     },
-  //     {
-  //       path: '/editTable3',
-  //       meta: {
-  //         title: '接口管理',
-  //         roles: ['admin'],
-  //       },
-  //       component: ()=>import('@/views/system/access/index.vue')
-  //     },
-  //   ],
-  //   meta: {
-  //     title: '系统管理',
-  //     icon:'el-icon-camera'
-  //   },
-  //   component: layout
-  // },
+  {
+    path: '/fsf', // 有个坑要填,如果子级大于2个,那个父级的path要设置一个唯一值
+    children: [
+      {
+        path: '/rolesamin',
+        meta: {
+          title: '用户管理',
+          roles: ['admin'],
+        },
+        component: ()=>import('@/views/system/user/index.vue')
+      },
+      {
+        path: '/role',
+        meta: {
+          title: '角色管理',
+          roles: ['admin'],
+        },
+        component: ()=>import('@/views/system/role/index.vue')
+      },
+      {
+        path: '/editTable2',
+        meta: {
+          title: '菜单管理',
+          roles: ['admin'],
+        },
+        component: ()=>import('@/views/system/menu/index.vue')
+      },
+      {
+        path: '/editTable3',
+        meta: {
+          title: '接口管理',
+          roles: ['admin'],
+        },
+        component: ()=>import('@/views/system/access/index.vue')
+      },
+    ],
+    meta: {
+      title: '系统管理',
+      icon:'el-icon-camera'
+    },
+    component: layout
+  },
   { path: '*', redirect: '/404', hidden: true,},
   { path: '/404',hidden: true,meta:{title:'303'} ,  component:layout},
 ]
