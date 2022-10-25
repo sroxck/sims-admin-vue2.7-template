@@ -3,7 +3,7 @@ import layout from '@/layout'
 export const asyncRouterMap= [
  
   {
-    path: '/',
+    path: '/home',
     name: 'router-name', // 设定路由的名字，一定要填写不然使用<keep-alive>时会出现各种问题
     meta: {
       roles: ['admin'], // 设置该路由进入的权限，支持多个权限叠加
@@ -20,7 +20,7 @@ export const asyncRouterMap= [
     },
     children: [
       {
-        path: '/',
+        path: '/home',
         meta: {
           title: '首页',
           roles: ['admin'],
@@ -34,25 +34,25 @@ export const asyncRouterMap= [
     path: '/test',
     children: [
       {
-        path: '/lcdata',
-        meta: {
-          title: '临床数据',
-          roles: ['admin'],
-        },
-       
-        component: ()=>import('@/views/clinical')
-      },
-      {
         path: '/form',
         meta: {
-          title: '表单生成器Demo',
+          title: '表单生成器',
           roles: ['admin'],
+          icon: 'el-icon-eleme'
         },
         component: ()=>import('@/views/test')
-      }
+      },
+      {
+        path: '/lcdata',
+        meta: {
+          title: '数据标注',
+          roles: ['admin'],
+        },
+        component: ()=>import('@/views/annotation')
+      },
     ],
     meta: {
-      title: '数据管理',
+      title: 'demo演示',
       icon: 'el-icon-eleme',
     },
     component: layout
@@ -210,48 +210,48 @@ export const asyncRouterMap= [
   //   },
   //   component: layout
   // },
-  {
-    path: '/fsf', // 有个坑要填,如果子级大于2个,那个父级的path要设置一个唯一值
-    children: [
-      {
-        path: '/rolesamin',
-        meta: {
-          title: '用户管理',
-          roles: ['admin'],
-        },
-        component: ()=>import('@/views/system/user/index.vue')
-      },
-      {
-        path: '/role',
-        meta: {
-          title: '角色管理',
-          roles: ['admin'],
-        },
-        component: ()=>import('@/views/system/role/index.vue')
-      },
-      {
-        path: '/editTable2',
-        meta: {
-          title: '菜单管理',
-          roles: ['admin'],
-        },
-        component: ()=>import('@/views/system/menu/index.vue')
-      },
-      {
-        path: '/editTable3',
-        meta: {
-          title: '接口管理',
-          roles: ['admin'],
-        },
-        component: ()=>import('@/views/system/access/index.vue')
-      },
-    ],
-    meta: {
-      title: '系统管理',
-      icon:'el-icon-camera'
-    },
-    component: layout
-  },
+  // {
+  //   path: '/fsf', // 有个坑要填,如果子级大于2个,那个父级的path要设置一个唯一值
+  //   children: [
+  //     {
+  //       path: '/rolesamin',
+  //       meta: {
+  //         title: '用户管理',
+  //         roles: ['admin'],
+  //       },
+  //       component: ()=>import('@/views/system/user/index.vue')
+  //     },
+  //     {
+  //       path: '/role',
+  //       meta: {
+  //         title: '角色管理',
+  //         roles: ['admin'],
+  //       },
+  //       component: ()=>import('@/views/system/role/index.vue')
+  //     },
+  //     {
+  //       path: '/editTable2',
+  //       meta: {
+  //         title: '菜单管理',
+  //         roles: ['admin'],
+  //       },
+  //       component: ()=>import('@/views/system/menu/index.vue')
+  //     },
+  //     {
+  //       path: '/editTable3',
+  //       meta: {
+  //         title: '接口管理',
+  //         roles: ['admin'],
+  //       },
+  //       component: ()=>import('@/views/system/access/index.vue')
+  //     },
+  //   ],
+  //   meta: {
+  //     title: '系统管理',
+  //     icon:'el-icon-camera'
+  //   },
+  //   component: layout
+  // },
   { path: '*', redirect: '/404', hidden: true,},
   { path: '/404',hidden: true,meta:{title:'303'} ,  component:layout},
 ]

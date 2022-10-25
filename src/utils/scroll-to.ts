@@ -16,6 +16,7 @@ var requestAnimFrame = (function() {
  * Because it's so fucking difficult to detect the scrolling element, just move them all
  * @param {number} amount
  */
+
 function move(amount) {
   document.documentElement.scrollTop = amount
   document.body.parentNode.scrollTop = amount

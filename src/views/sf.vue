@@ -1,10 +1,13 @@
 <script setup lang="ts">
 
-
 </script>
 
 <template>
   <div>
-    222
+
   </div>
 </template>
+
+<script scoped lang="">
+
+</script>

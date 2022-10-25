@@ -17,7 +17,7 @@ export default defineComponent({
       loginStore.login({ account: account.value, password: password.value }).then((res) => {
 
         if (res) {
-          router.value.push('/')
+          router.value.push('/home')
         }
       })
 

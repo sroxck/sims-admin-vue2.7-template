@@ -5,7 +5,9 @@
 * {
   @apply select-none
 }
-
+*{
+  user-select:auto !important
+}
 /* vue 过渡动画样式 */
 .sale-fade-enter-active,
 .sale-fade-leave-active {
@@ -35,4 +37,20 @@
 }
 #DialogContainer .el-dialog__wrapper{
  z-index: 3888 !important;
+}
+
+.closes [class^=el-icon-] {
+  // margin-right  : 5px;
+  width         : 24px;
+  text-align    : center;
+  // font-size     : 20px;
+  vertical-align: baseline !important;
+}
+
+[class^=el-icon-] {
+  // margin-right  : 5px;
+  width         : 24px;
+  text-align    : center;
+  // font-size     : 20px;
+  vertical-align: middle !important;
 }

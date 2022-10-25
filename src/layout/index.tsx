@@ -42,7 +42,6 @@ export default defineComponent({
       <div class="content  h-screen">
         <sidbar style="float:left;width:230px;overflow: auto;"></sidbar>
         {/* 原生element菜单栏组件 */}
-        {/* <ElementSideBar></ElementSideBar> */}
         <navbar class="navbar-content" >
           <div class="tags-view-container">
             <el-scrollbar class="scrollBar">

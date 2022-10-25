@@ -11,3 +11,6 @@
 .el-select{
   width: 100%;
 }
+.row {
+  @apply flex flex-wrap rounded-lg  h-full p-3;
+}

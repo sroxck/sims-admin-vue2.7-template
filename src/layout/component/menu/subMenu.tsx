@@ -1,6 +1,6 @@
 import { defineComponent, ref, watch } from "vue";
 import item from "./item";
-import "./subMenu.scss";
+import style from "./subMenu.module.scss";
 import "animate.css";
 import { useAppStore, storeToRefs } from "@/store/index";
 import { useRoute, useRouter } from "@/router";
@@ -12,12 +12,14 @@ export default defineComponent({
   },
   setup(props, { slots }) {
     const store = useAppStore();
-    const { isCollapsed, isActive } = storeToRefs(store);
+    const { isCollapsed, isActive,currentRoute } = storeToRefs(store);
 
     const toggle = ref(false);
     const showTitle = ref(false);
     const route = useRoute();
+    const router = useRouter()
     watch(route, (item) => {
+      console.log(route.value,props.index,'00--')
       if (!isCollapsed.value) {
         (props.child as any).map((item2: any) => {
           if (item2.path == item.path) {
@@ -90,26 +92,26 @@ export default defineComponent({
     function renderMenu() {
       return (
         <div>
-          
-          <li class="group" style={{borderRadius:isCollapsed.value ? '5px':'',overflow:isCollapsed.value ? 'hidden' : '',background: isActive.value == props.index ?'#eee':''}}>
-            <div class="">
+          <li class="group" style={{borderRadius:isCollapsed.value ? '5px':'',overflow:isCollapsed.value ? 'hidden' : ''}}>
+            <div class={[route.value.matched?.[0].path == props.index ? style["menu-item-active"]:'',"hover:bg-primary",style['menu-item']]} >
               <div
-                class="sMenu leading-extra-loose px-6  cursor-pointer hover:bg-blue-200 select-none "
+                class="sMenu leading-extra-loose   cursor-pointer  select-none "
                 style="position:relative;height:60px;"
                 onClick={() => {
                   if (isCollapsed.value) return;
                   toggle.value = !toggle.value;
                 }}
               >
-                <div class="title">
+                <div class={[style.title]}>
                   <el-tooltip
                     placement="right"
                     disabled={!isCollapsed.value}
-                    class="toplip "
+                    class={[style.toplip]}
                   >
                     <div slot="content"> {slots.title && slots.title()}</div>
                     <div>
-                      {slots.icon && slots.icon()}
+                        
+                    {slots.icon && <em style="width: 35px; display: inline-block;" class={[isActive.value == props.index ||route.value.matched[0].path == props.index ? style["icon-active"] : "",style["menu-icon"]]}>{slots.icon()}</em> }
                       <span
                         style={{
                           display: isCollapsed.value ? "none" : "inline-block",
@@ -121,9 +123,9 @@ export default defineComponent({
                       </span>
                       {!isCollapsed.value ? (
                         toggle.value ? (
-                          <i class="el-icon-arrow-up float-right align-middle text-xs jb"></i>
+                          <i class={["el-icon-arrow-up float-right align-middle text-xs", style['jb']]}></i>
                         ) : (
-                          <i class="el-icon-arrow-down float-right align-middle text-xs jb"></i>
+                          <i class={["el-icon-arrow-down float-right align-middle text-xs ",style['jb']]}></i>
                         )
                       ) : (
                         ""
@@ -132,7 +134,8 @@ export default defineComponent({
                   </el-tooltip>
                 </div>
               </div>
-              <el-collapse-transition>
+            </div>
+            <el-collapse-transition>
                 {toggle.value ? (
                   <ul class={["transition-all", "duration-400", "bg-white"]}>
                     {slots.default && slots.default()}
@@ -141,7 +144,6 @@ export default defineComponent({
                   ""
                 )}
               </el-collapse-transition>
-            </div>
           </li>
         </div>
       );

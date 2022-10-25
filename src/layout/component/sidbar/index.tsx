@@ -49,17 +49,20 @@ export default defineComponent({
                   }, 300);
                 }}
               >
-                <template slot="icon">
-                  <i
+                {/* <template slot="icon"> */}
+                  {
+                    // item.meta?.icon ? <i class={item.meta?.icon}></i>:""
+                  }
+                  {/* <i
                     class={[item.meta?.icon ? item.meta.icon : "el-icon-"]}
-                  ></i>
-                </template>
+                  ></i> */}
+                {/* </template> */}
                 {item.meta?.title}
               </sMenuItem>
             );
           }),
         icon: () => (
-          <i class={[item.meta?.icon ? item.meta.icon : "el-icon-"]}></i>
+          item.meta?.icon ? <i class={item.meta?.icon}></i>:""
         ),
       };
     };

@@ -1,5 +1,5 @@
 import Vue, { computed, getCurrentInstance } from "vue";
-import VueRouter, { RouteConfig } from "vue-router";
+import VueRouter, { Route, RouteConfig } from "vue-router";
 import Test from "../views/test";
 Vue.use(VueRouter);
 import layout from "@/layout";
@@ -42,7 +42,7 @@ export const useRoute = () => {
   const vm = getCurrentInstance();
   if (!vm) throw new Error("must be called in setup");
   const router = computed(() => vm.proxy.$route);
-  return router;
+  return router 
 };
 
 export default router;

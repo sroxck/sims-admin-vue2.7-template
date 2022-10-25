@@ -7,6 +7,7 @@ import {
 } from "vue";
 import "./index.scss";
 import collapse from "./collapse";
+import breadcrumb from '@/components/Breadcrumb/index.vue'
 import { useRoute } from "@/router";
 import { escapeDate, findMax, indexOf, remove } from "sims-tools";
 import item from "../menu/item";
@@ -14,6 +15,7 @@ import { RouteRecord } from "vue-router";
 export default defineComponent({
   components: {
     collapse,
+    breadcrumb
   },
   setup(props, { slots }) {
     const route = useRoute();
@@ -44,19 +46,21 @@ export default defineComponent({
       <div class="navbar">
         <nav
           class="  flex "
-          style="align-items: center;height:50px"
+          style="align-items: center;height:60px"
         >
-          <collapse />
+          {/* <collapse /> */}
           <div>
-            <el-breadcrumb separator-class="el-icon-arrow-right">
+              <breadcrumb id="breadcrumb-container" class="breadcrumb-container" />
+
+            {/* <el-breadcrumb separator-class="el-icon-arrow-right">
               {levelList.value.map((item: any) => (
                 <el-breadcrumb-item>{item.meta.title}</el-breadcrumb-item>
               ))}
-            </el-breadcrumb>
+            </el-breadcrumb> */}
           </div>
           <div
             class="float-right justify-end flex"
-            style="flex:1;align-items: center;"
+            style="flex:1;align-items: center;height:60px;"
           >
             <div class="flex flex-col items-start">
               <span class="rightFont text-gray-600  font-medium">

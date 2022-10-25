@@ -24,6 +24,7 @@
     "element-ui": "^2.15.8",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
+    "path-to-regexp": "^6.2.1",
     "pinia": "^2.0.17",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
@@ -38,6 +39,7 @@
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
+    "@haiyaotec/heimdall-ts": "^2.1.8-alpha",
     "@types/jest": "^27.0.1",
     "@types/nprogress": "^0.2.0",
     "@vue/test-utils": "^1.1.3",
