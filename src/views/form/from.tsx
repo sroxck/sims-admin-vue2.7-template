@@ -30,9 +30,9 @@ export default defineComponent({
       type: Object as PropType<Schema>,
     },
   },
-  setup(props, crx) {
+  setup(props, ctx) {
     const { formData } = useForm(props.config);
-
+    ctx.expose({formData })
     function renderOption(type: string, data: any[]) {
       if (type === "el-select") {
         return (

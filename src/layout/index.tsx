@@ -1,5 +1,5 @@
 import { computed, defineComponent, watch } from "vue";
-import sidbar from "./component/sidbar";
+import sidbar from "./component/sidebar";
 import navbar from "./component/navbar";
 import "./index.scss";
 import { useAppStore, storeToRefs } from "@/store";
