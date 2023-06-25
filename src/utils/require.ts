@@ -1,4 +1,14 @@
+/*
+ * @Author: sroxck
+ * @Date: 2023-05-29 10:31:09
+ * @LastEditors: sroxck
+ * @LastEditTime: 2023-06-25 10:20:18
+ * @Description: 
+ */
+
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
+import { useLoginStore } from "@/store/modules/login";
+
 import { MessageBox, Message } from 'element-ui'
 const service = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_API, // url = base url + request url
@@ -23,6 +33,28 @@ service.interceptors.request.use(
   }
 )
 
+// 请求拦截器
+service.interceptors.request.use(
+
+  config => {
+    const loginStore = useLoginStore()
+    console.log(loginStore,'loginStore')
+    if (loginStore.token) {
+      // 让每个请求携带token
+      // ['Authorization'] 是自定义标题键
+      // 请根据实际情况修改
+        config.headers['Authorization'] = loginStore.token
+    }
+ 
+    // console.log(1)
+    return config
+  },
+  error => {
+    // 处理请求错误
+    return Promise.reject(error)
+  }
+)
+
 // response interceptor
 service.interceptors.response.use(
   /**
@@ -37,9 +69,9 @@ service.interceptors.response.use(
    */
   response => {
     const res = response.data
-
+    console.log(res,'res')
     // if the custom code is not 20000, it is judged as an error.
-    if (res.code !== 20000) {
+    if (res.status !== 200) {
       Message({
         message: res.message || 'Error',
         type: 'error',
@@ -47,7 +79,7 @@ service.interceptors.response.use(
       })
 
       // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
-      if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
+      if (res.code === 500 || res.code === 502 ) {
         // to re-login
         MessageBox.confirm('You have been logged out, you can cancel to stay on this page, or log in again', 'Confirm logout', {
           confirmButtonText: 'Re-Login',

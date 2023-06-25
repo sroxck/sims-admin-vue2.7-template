@@ -1,3 +1,10 @@
+/*
+ * @Author: sroxck
+ * @Date: 2023-05-29 10:31:09
+ * @LastEditors: sroxck
+ * @LastEditTime: 2023-06-21 10:22:33
+ * @Description: 
+ */
 import { computed, defineComponent, watch } from "vue";
 import sidbar from "./component/sidebar";
 import navbar from "./component/navbar";
@@ -33,7 +40,7 @@ export default defineComponent({
         route.value.path !==
         catchList.value[catchList.value.length - 1].fullPath
       ) {
-        router.value.push(catchList.value[catchList.value.length - 1].fullPath).catch(res=>{})
+        router.value.push(catchList.value[catchList.value.length - 1].fullPath)
         isActive.value = catchList.value[catchList.value.length - 1].fullPath;
       }
     }
@@ -46,6 +53,7 @@ export default defineComponent({
           <div class="tags-view-container">
             <el-scrollbar class="scrollBar">
               {catchList.value.map((item, index) => {
+             
                 return (
                   <el-tag
                     type={

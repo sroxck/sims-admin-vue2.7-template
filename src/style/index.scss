@@ -23,7 +23,9 @@
   transform: scale(1.08);
   opacity  : 0;
 }
-
+.el-dialog{
+  margin-top: 6vh !important;
+}
 .el-input__inner {
   border: 1px solid #8794ae !important;
   border-radius: 8px !important;
@@ -53,4 +55,31 @@
   text-align    : center;
   // font-size     : 20px;
   vertical-align: middle !important;
+}
+.el-link{
+  font-size: 12px !important;
+}
+.el-select-dropdown__item{
+  font-size: 12px !important;
+}
+.el-button.cx {
+  background: rgba(236, 238, 248, 1);
+  font-size: 12px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 400;
+  color: rgba(73, 90, 191, 1);
+  border: 1px solid rgba(236, 238, 248, 1);
+  &:hover, &:focus {
+    background-color: #495abf;
+    border-color: #495abf;
+    color: #eceef8;
+  }
+  &:active {
+    background: #4251ac;
+    border-color: #4251ac;
+    color: #eceef8;
+  }
+}
+.queryBtn{
+  float: right;
 }

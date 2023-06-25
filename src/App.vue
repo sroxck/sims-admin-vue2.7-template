@@ -1,3 +1,10 @@
+<!--
+ * @Author: sroxck
+ * @Date: 2023-05-29 10:31:09
+ * @LastEditors: sroxck
+ * @LastEditTime: 2023-06-25 09:52:53
+ * @Description: 
+-->
 <template>
   <div id="app">
     <router-view />
@@ -11,14 +18,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+  height: 100vh;
 }
 </style>
 
 <script lang="ts" setup>
-import { api_getList } from "@/api/login";
 
-// api_getList('22').then(res=>{
-//   console.log(res);
-  
-// })
 </script>

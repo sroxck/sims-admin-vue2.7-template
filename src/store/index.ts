@@ -1,3 +1,10 @@
+/*
+ * @Author: sroxck
+ * @Date: 2023-05-29 10:31:09
+ * @LastEditors: sroxck
+ * @LastEditTime: 2023-06-25 10:19:23
+ * @Description: 
+ */
 import Vue from "vue";
 import { createPinia, PiniaVuePlugin  } from "pinia";
 import piniaPlugin from "./plugins/piniaPlugin";
@@ -13,4 +20,5 @@ store.use(
 export * from "./modules/test";
 export * from "./modules/app";
 export * from "./modules/settings";
+export * from "./modules/login";
 

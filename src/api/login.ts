@@ -1,11 +1,14 @@
 import {type login } from "@/types";
 import { request } from "@/utils/index";
-export function apiLogin(data:login):string{
-  if(data.account == 'admin' && data.password == '123456'){
-    return '12312319054019450190'
-  }else{
-    return ''
-  }
+import { postFun } from "./common";
+export async function apiLogin(data:any){
+  const res = await postFun('/api/login/password', {
+    "userName": data.username,
+    "userPassword": data.password,
+    "captcha": data.captcha,
+    "captchaToken": data.captchaToken,
+  })
+  return res
 } 
 export function api_getList(params: any) {
   return request({

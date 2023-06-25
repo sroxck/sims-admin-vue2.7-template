@@ -21,7 +21,7 @@ export default defineComponent({
       }, 200);
     });
     watch(route, (item) => {
-      console.log(route.value.matched[0].path,props.index,isActive.value,'---')
+      console.log(route.value.matched[0].path, props.index, isActive.value, '---')
       console.log(item, 'item');
       isActive.value = item.fullPath
       const obj = {
@@ -35,21 +35,18 @@ export default defineComponent({
 
     const itemClick = (_: any) => {
       if (props.index == location.hash.replace("#", "")) return;
-      router.value.push(props.index as string).then((_) => {
-        let object: Record<string, any>;
-        if (route.value && route.value.meta) {
-          object = {
-            title: route.value.meta.title,
-            fullPath: route.value.fullPath,
-          };
+      router.value.push(props.index as string)
+      let object: Record<string, any>;
+      if (route.value && route.value.meta) {
+        object = {
+          title: route.value.meta.title,
+          fullPath: route.value.fullPath,
+        };
 
-          if (indexOf(catchList.value, object) == -1) {
-            catchList.value.push(object);
-          }
+        if (indexOf(catchList.value, object) == -1) {
+          catchList.value.push(object);
         }
-      }).catch(err => {
-
-      })
+      }
     };
 
     function renderMenu() {
@@ -58,19 +55,19 @@ export default defineComponent({
           <el-link type='info' underline={false} onClick={itemClick} style="display: inline-block;width: 100%;overflow: hidden;">
             <li
               onClick={itemClick}
-              class={[style["menu-item"],"cursor-pointer hover:bg-primary"]}
+              class={[style["menu-item"], "cursor-pointer hover:bg-primary"]}
               style={{
-                lineHeight:'60px',
+                lineHeight: '60px',
                 borderRadius: isCollapsed.value ? '5px' : '',
                 overflow: isCollapsed.value ? 'hidden' : '', height: '60px',
-                backgroundColor:route.value.matched[0].path == props.index ? '#f5f6fb!important' : ""
+                backgroundColor: route.value.matched[0].path == props.index ? '#f5f6fb!important' : ""
               }}
             >
               <div class="title ">
                 <el-tooltip placement="right" disabled={!isCollapsed.value} class="style.tooltip-outside">
                   <div slot="content"> {slots.default && slots.default()} </div>
                   <div>
-                    {slots.icon ? <em style="width: 35px; display: inline-block;" class={[isActive.value == props.index ? style['icon-active'] : "",style["menu-icon"]]}>{slots.icon()}</em> : <i class="el-icon-"></i>}
+                    {slots.icon ? <em style="width: 35px; display: inline-block;" class={[isActive.value == props.index ? style['icon-active'] : "", style["menu-icon"]]}>{slots.icon()}</em> : <i class="el-icon-"></i>}
                     <span
                       style={{
                         display: isCollapsed.value ? "none" : "inline-block",
